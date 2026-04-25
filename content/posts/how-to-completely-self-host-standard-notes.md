@@ -1,0 +1,149 @@
+---
+title: 'How to completely self-host Standard Notes (Updated 2021)'
+date: 2020-08-25
+description: 'This is a tutorial on how to self-host Standard Notes, for security, privacy and control of data'
+cover:
+  image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
+tags:
+  - 'Guides'
+---
+
+<h2 id="introduction">Introduction</h2><p>This article will cover setting up your own self-hosted Standard Notes instance and routing your instance through Nginx to allow for public exposure.<br>We'll also go over self-hosting Standard Notes Extensions to allow you to use extensions within your instance, such as a Markdown editor or secure spreadsheets</p><h3 id="what-is-standard-notes">What is Standard Notes</h3><p><a href="https://standardnotes.org/">Standard Notes</a> is a free, open-source, and completely encrypted notes app. Being open-source, allows anyone to self-host their own Standard Notes server. This means that you own all of your data, on your server.</p><p>Standard Notes is great for a secure, private, encrypted note-taking solution. Even without self-hosting, all notes are E2E (end-to-end) encrypted. This means that nobody, other than yourself, can view the notes that you have written.</p><p>I have written about Standard Notes in my <a href="https://theselfhostingblog.com/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/">My Self Hosted Note Syncing Journey Once Switching to iPhone</a> blog post.</p><p>Self-hosting Standard Notes is probably for the paranoid and the curious. I was the latter!</p><p>It's relatively simple and gives you peace of mind knowing that only you own your data.</p><h2 id="setting-up-standard-notes-syncing-server">Setting up Standard Notes Syncing Server</h2><h3 id="step-1-setting-up-the-syncing-server">Step 1: Setting up the syncing server</h3><p>You'll need to set up a new Linux server. I use a Proxmox instance running on a server in my loft. You could also use something like <a href="https://www.digitalocean.com/">Digital Ocean</a> to host your Standard Notes Syncing server. Using the following link will give you $100 worth of credits for 60 days to play around with, just sign up using <a href="https://m.do.co/c/d2a3afe52625">this link</a>.</p><p>You could also use a cheap <a href="https://amzn.to/3cWTlno">Raspberry PI</a> to set up your own Standard Notes Syncing server.</p><p>This new server will need to have Docker and Docker Compose installed.</p><p>These can be installed by running the following commands on your server after you have ssh'd to your server</p><pre><code class="language-shell">sudo apt-get update
+sudo apt-get upgrade
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose</code></pre><p>Next, you'll need to clone the syncing-server repo down to your home directory.</p><pre><code class="language-shell">git clone https://github.com/standardnotes/syncing-server.git
+</code></pre><p>You can now run the server setup.</p><p><code>cd</code> into the syncing-server folder and run the following command</p><pre><code class="language-shell">./server.sh setup</code></pre><p>You will see the following output</p><pre><code>Initializing default configuration
+Default configuration files created as .env and docker/*.env files. Feel free to modify values if needed.</code></pre><p>Next, let's start the server</p><pre><code>./server.sh start</code></pre><p>Allow the startup script to run and the docker containers to spin up, eventually, you should have an instance running at <code>http://localhost:3000</code></p><p>You can verify this with the following message.</p><pre><code>{"message":"Hi! You're not supposed to be here."}</code></pre><blockquote>Your MySQL Data will be written to your local disk at /var/lib/mysql - Be sure to back this up.</blockquote><h3 id="important-if-this-didn-t-work-for-you-follow-these-steps-instead-">Important! If this didn't work for you, follow these steps instead.</h3><p><code>cd</code> into your <code>syncing-server</code> directory.</p><p>We need to manually set up a MySQL server to run in a docker container. Firstly, make sure you don't have any of the previous docker containers running.</p><pre><code class="language-shell">./server.sh stop
+./server.sh cleanup</code></pre><p>Next, let's install the MySQL docker server. Run the following command.</p><pre><code class="language-shell">docker run --name=mysql1 -d -p 3306:3306 mysql/mysql-server:latest</code></pre><p>Then run the following and wait until MySQL shows as <code>healthy</code>.</p><pre><code>docker ps</code></pre><p>Once healthy, run the following</p><pre><code>docker logs mysql1 2&gt;&amp;1 | grep GENERATED</code></pre><p>This will be the password you need to log into the root user for MySQL</p><p>Here's an example output</p><pre><code class="language-shell">GENERATED ROOT PASSWORD: Axegh3kAJyDLaRuBemecis&amp;EShOs</code></pre><p>We now need to log into the MySQL instance.</p><pre><code>docker exec -it mysql1 mysql -uroot -p</code></pre><p>Once in, we need to change the default password for the root user. Or, you can save the generated one.</p><pre><code>ALTER USER 'root'@'localhost' IDENTIFIED BY 'yournewpassword';</code></pre><p>Now, we need to configure a new user for Standard Notes and a new Database</p><p>Create the database following the .env file in <code>syncing-server</code></p><pre><code class="language-shell">CREATE DATABASE standard_notes_db</code></pre><p>Create the user, this must match the specified username and password in <code>.env</code></p><pre><code class="language-shell">CREATE USER 'std_notes_user'@'%' IDENTIFIED BY 'changeme123';</code></pre><p>Grant user privileges to the database.</p><pre><code class="language-shell"> GRANT ALL PRIVILEGES ON standard_notes_db.* TO 'std_notes_user'@'%';</code></pre><p>That should be all for MySQL, you can exit now by running</p><pre><code class="language-shell">exit</code></pre><p>Now, let's run the Standard Notes docker command.</p><pre><code class="language-shell">docker run -d -p 3000:3000 --net host --env-file=.env standardnotes/syncing-server</code></pre><p>Once all spun up, you can verify the endpoint by navigating to <code>localhost:3000</code></p><p>You should see the following message.</p><pre><code>{"message":"Hi! You're not supposed to be here."}</code></pre><h3 id="step-2-setting-up-nginx">Step 2: Setting up Nginx</h3><p><a href="https://www.nginx.com/">Nginx</a> is a reverse proxy that allows you to point incoming web traffic to your new Standard Notes syncing server. If you only intend on using Standard Notes locally, you can skip this section entirely.</p><h4 id="installation">Installation</h4><pre><code class="language-shell">sudo apt install nginx</code></pre><p>If you have UFW installed, you will have to Allow Nginx through your local firewall.</p><p>I have a tutorial for <a href="https://theselfhostingblog.com/posts/setting-up-ufw-on-ubuntu-server/">setting up UFW here</a></p><pre><code class="language-shell">sudo ufw app list
+</code></pre><pre><code>Output
+---
+
+Available applications:
+  Nginx Full
+  Nginx HTTP
+  Nginx HTTPS
+  OpenSSH
+</code></pre><p>As you can see, there are three profiles available for Nginx:</p><ul><li><strong>Nginx Full</strong>: This profile opens both port 80 (normal, unencrypted web traffic) and port 443 (TLS/SSL encrypted traffic)</li><li><strong>Nginx HTTP</strong>: This profile opens only port 80 (normal, unencrypted web traffic)</li><li><strong>Nginx HTTPS</strong>: This profile opens only port 443 (TLS/SSL encrypted traffic)</li></ul><p>It is recommended that you enable the most restrictive profile that will still allow the traffic you’ve configured. Since we haven’t configured SSL for our server yet in this guide, we will only need to allow traffic on port 80.</p><p>You can enable this by typing:</p><pre><code class="language-shell">sudo ufw allow 'Nginx HTTP'
+</code></pre><h4 id="checking-your-webserver-is-up-and-running">Checking your webserver is up and running</h4><pre><code class="language-shell">sudo systemctl status nginx
+</code></pre><p>You should see something that looks like the following</p><pre><code>● nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: active (running)
+...
+</code></pre><h3 id="step-3-pointing-nginx-to-your-syncing-server">Step 3: Pointing Nginx to your syncing server</h3><p>The next part allows us to take incoming traffic and point it to your container instance. Allowing you to expose your syncing server to the internet.</p><p>This will allow you to hook up Standard Notes on any device and sync your notes privately.</p><p>If someone gets hold of your public endpoint, your notes will still be safe as they are encrypted with your Standard Notes username and password.</p><p>Navigate to <code>/etc/nginx/</code></p><pre><code class="language-shell">cd /etc/nginx/
+</code></pre><p>Use your favourite text editor and open the following file with sudo</p><pre><code class="language-shell">sudo vim nginx.conf
+</code></pre><p>I use the following code for my syncing server</p><pre><code class="language-shell">server {
+    listen 80;
+    listen [::]:80;
+    server_name notes.theselfhostingblog.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000; # syncing-server address
+    }
+}
+</code></pre><h3 id="step-4-port-forwarding">Step 4: Port-forwarding</h3><p>You will need to port forward your instance to allow public access to your instance. This will involve googling how to port forward from your router.</p><p>You'll need to <a href="https://portforward.com/">point port 80 to your instance</a> where Nginx is set up.</p><h3 id="step-5-linking-standard-notes-with-your-public-domain">Step 5: Linking Standard Notes with your public domain</h3><p>You will also need to set up a public domain name. This can then be used to call your new public instance with port 80 exposed.</p><p>For example, I would set up a subdomain on <code>theselfhostingblog.com</code> to be <code>notes.theselfhostingblog.com</code>. Notice this is also the domain I specified in my Nginx config above.</p><p>Here's something to search for with regards to <a href="https://www.google.com/search?client=firefox-b-d&amp;q=point+domain+name+to+server">setting up a domain name</a></p><h4 id="setting-up-certbot">Setting up Certbot</h4><p>Certbot allows us to generate SSL certificates for free with Let's Encrypt. It's really really simple to install and use. Even hooks in with Nginx, meaning that there's no more manual configuration required.</p><p>To install Certbot, simply run the following command</p><pre><code class="language-bash">sudo apt-get install certbot</code></pre><p>Then, to set up your SSL certificate, run</p><pre><code>sudo certbot</code></pre><p>Follow the instructions, select your domain name from the Nginx list.<br>Also select <code>redirect</code> as this will upgrade any HTTP requests to HTTPS.</p><hr><h3 id="step-6-connecting-to-your-standard-notes-syncing-server-from-standard-notes">Step 6: Connecting to your Standard Notes syncing server from Standard Notes</h3><p>Congratulations on making it this far, now it's time to hook up Standard Notes with your new private syncing server.</p><p>Standard Notes is available on multiple platforms. The easiest way for this tutorial is to use their web interface.</p><p>Navigate to <a href="https://app.standardnotes.org/">https://app.standardnotes.org/</a></p><p>You'll be greeted with something that looks like the following screenshot</p><figure class="kg-card kg-image-card"><img src="/images/2021/02/1-1.jpg" class="kg-image" alt loading="lazy" width="2000" height="1779" srcset="/images/size/w600/2021/02/1-1.jpg 600w, /images/size/w1000/2021/02/1-1.jpg 1000w, /images/size/w1600/2021/02/1-1.jpg 1600w, /images/2021/02/1-1.jpg 2000w" sizes="(min-width: 720px) 720px"></figure><p>You will need to sign up with a new account as this will be syncing to your server.</p><p>Click <code>Register</code></p><p>Before filling out your registration credentials, select <code>Advanced Options</code></p><figure class="kg-card kg-image-card"><img src="/images/2021/02/2-1.jpg" class="kg-image" alt loading="lazy" width="996" height="1690" srcset="/images/size/w600/2021/02/2-1.jpg 600w, /images/2021/02/2-1.jpg 996w" sizes="(min-width: 720px) 720px"></figure><p>Now fill in your new server URL or IP address.</p><p>Then go back to the registration form and enter an Email and Password</p><p>Finally, click <code>Register</code></p><p>Easy right? You now have a working self-hosted Standard Notes server.</p><hr><h2 id="setting-up-self-hosted-standard-notes-extensions">Setting up self-hosted Standard Notes extensions</h2><p>Now that you have Standard Notes working, you can add and delete notes at your heart's desire. But wouldn't it be cool to also use the Standard Notes Extensions to fully embrace the power of Standard Notes?</p><p>You can leave it here, or follow the below process to self-host your extensions too, utilising the power of Markdown editors or Secure Spreadsheets!</p><p>Firstly, by self-hosting your extensions, you're bypassing the need to purchase a license. The Standard Notes team mainly works from a 'Visionary' point of view. I heavily encourage you to purchase a license to support the great work that the team are doing. Here's a quote from the Standard Notes team themselves.</p><blockquote><em>"Most of our extensions are <a href="https://github.com/sn-extensions">open-source</a> and available for self-hosting. You can also learn to develop your own extensions by following the guides on this site. However, we encourage you to support the sustainability and future development of this project by <a href="https://standardnotes.org/extensions">purchasing a subscription</a>."</em> ~ <a href="https://docs.standardnotes.org/extensions/intro#sustainability">Sustainability of Standard Notes</a></blockquote><p>If however, you would still like to proceed with hosting your Extensions, then please follow the steps below.</p><h3 id="step-1-pulling-the-standard-notes-extensions-repository">Step 1: Pulling the Standard Notes Extensions Repository</h3><p>I will be using the Standard Notes Extention repository by <a href="https://github.com/iganeshk">iganeshk</a> who has provided their own <a href="https://github.com/iganeshk/standardnotes-extensions/blob/master/README.md">README.md</a> for setting up Standard Notes Extensions. I'll be using their instructions in my steps below. All credit for the setup goes to <a href="https://github.com/iganeshk">iganeshk</a></p><p>Let's begin.</p><p>Firstly, start by ssh'ing into your new server that we set up in the previous section.</p><p>We'll need to pull down the required repository</p><pre><code class="language-bash">git clone https://github.com/iganeshk/standardnotes-extensions.git
+cd standardnotes-extensions
+</code></pre><p>Ensure that you have Python3 and pip installed on your server as this is used to install the required dependencies for the extensions repository.</p><pre><code class="language-bash">sudo apt-get install -y python3 python3-pip
+</code></pre><p>Then use pip3 to install the required dependencies. You may have to reboot before this command works.</p><pre><code class="language-bash">pip3 install -r requirements.txt
+</code></pre><h3 id="step-2-configuring-the-standard-notes-extensions-repository">Step 2: Configuring the Standard Notes Extensions Repository</h3><p>You'll now need to create a <code>.env</code> file to store your environment variables for the repository.</p><p>Ensure you're in the <code>standardnotes-extensions</code> directory</p><pre><code class="language-bash">cd ~/standardnotes-extensions
+</code></pre><p>Then create the <code>.env</code> file</p><pre><code class="language-bash">touch .env
+</code></pre><p>Then open with your favourite editor</p><pre><code class="language-bash">vim .env
+</code></pre><p>Paste in the following example from <code>iganeshk</code><br><a href="https://github.com/iganeshk/standardnotes-extensions/blob/master/env.sample">env.sample</a></p><p>Edit your domain value, and Github username and TOKEN</p><p>The Github integration is to allow you to clone down the Standard Notes extensions from the <a href="https://github.com/sn-extensions">Standard Notes Github</a> page.</p><pre><code># Github Credentials
+# Generate your token here: https://github.com/settings/tokens
+# No additional permission required, this is just to avoid github api rate limits
+#
+
+domain: https://domain.com/extensions
+
+github:
+  username: USERNAME
+  token: TOKEN
+</code></pre><p>Save and close that file. Ensuring that it is named <code>.env</code></p><h3 id="step-3-running-standard-notes-extensions-from-your-server">Step 3: Running Standard Notes Extensions from your server</h3><p>You'll now need to execute the service.</p><p>This can be done by running the following command.</p><pre><code class="language-bash">python3 build_repo.py
+</code></pre><p>This will generate a <code>/public</code> directory, which you will serve.</p><h3 id="step-4-routing-with-nginx">Step 4: Routing with Nginx</h3><p>Now, with that static folder generated, we just need to point Nginx to that <code>/public</code> folder to serve the extensions.</p><p>As before in the previous section, edit your Nginx config</p><p>Navigate to <code>/etc/nginx/</code></p><pre><code class="language-shell">cd /etc/nginx/
+</code></pre><p>Use your favourite text editor and open the following file with sudo</p><pre><code class="language-shell">sudo vim nginx.conf
+</code></pre><p>You'll see your previously added Nginx config for serving the syncing server</p><pre><code class="language-shell">server {
+    listen 80;
+    listen [::]:80;
+    server_name notes.theselfhostingblog.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000; # syncing-server address
+    }
+}
+</code></pre><p>Under the server section, you will need to add the following configuration, again taken from <code>iganeshk</code>.</p><pre><code>location ^~ /extensions {
+		autoindex off;
+		alias /path/to/standardnotes-extensions/public; #CHANGE ME
+		# CORS HEADERS
+		if ($request_method = 'OPTIONS') {
+		   add_header 'Access-Control-Allow-Origin' '*';
+		   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+		   #
+		   # Custom headers and headers various browsers *should* be OK with but aren't
+		   #
+		   add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+		   #
+		   # Tell client that this pre-flight info is valid for 20 days
+		   #
+		   add_header 'Access-Control-Max-Age' 1728000;
+		   add_header 'Content-Type' 'text/plain; charset=utf-8';
+		   add_header 'Content-Length' 0;
+		   return 204;
+		}
+		if ($request_method = 'POST') {
+		   add_header 'Access-Control-Allow-Origin' '*';
+		   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+		   add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+		   add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+		}
+		if ($request_method = 'GET') {
+		   add_header 'Access-Control-Allow-Origin' '*';
+		   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+		   add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+		   add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+		}
+	}
+</code></pre><p>Your <code>nginx.conf</code> should now look like the following</p><pre><code>server {
+    listen 80;
+    listen [::]:80;
+    server_name notes.theselfhostingblog.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000; # syncing-server address
+    }
+
+    location ^~ /extensions {
+		autoindex off;
+		alias /path/to/standardnotes-extensions/public; #CHANGE ME
+		# CORS HEADERS
+		if ($request_method = 'OPTIONS') {
+		   add_header 'Access-Control-Allow-Origin' '*';
+		   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+		   #
+		   # Custom headers and headers various browsers *should* be OK with but aren't
+		   #
+		   add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+		   #
+		   # Tell client that this pre-flight info is valid for 20 days
+		   #
+		   add_header 'Access-Control-Max-Age' 1728000;
+		   add_header 'Content-Type' 'text/plain; charset=utf-8';
+		   add_header 'Content-Length' 0;
+		   return 204;
+		}
+		if ($request_method = 'POST') {
+		   add_header 'Access-Control-Allow-Origin' '*';
+		   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+		   add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+		   add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+		}
+		if ($request_method = 'GET') {
+		   add_header 'Access-Control-Allow-Origin' '*';
+		   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+		   add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+		   add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+		}
+	}
+}
+</code></pre><p>Make sure you change the alias to point to your public folder. Remember, this is in the <code>/home/your-user/standardnotes-extensions/public</code> location.</p><p>For me, it would be</p><pre><code>alias /home/ubuntu/standardnotes-extensions/public
+</code></pre><p>Close and save the <code>nginx.conf</code></p><p>That's it for config.</p><p>The last thing you'll need to do in terms of setup is to verify the endpoint.</p><h3 id="step-5-verifying-the-standard-notes-extensions-endpoint">Step 5: Verifying the Standard Notes Extensions endpoint</h3><p>Navigate to your previous URL and add <code>extensions/index.json</code> to the end of the URL.</p><p>For example</p><p><code>http://notes.theselfhostingblog.com/extensions/index.json</code></p><p>You should see a list of JSON objects.</p><p>If, you don't see the endpoint correctly, ensure that the <code>/public</code> folder has the correct permissions from Nginx to read the files.</p><h3 id="step-6-adding-extensions-to-standard-notes">Step 6: Adding Extensions to Standard Notes</h3><p>Nearly there. We just need to add our new endpoint to our existing Standard Notes client.</p><p>Navigate back to <code>https://app.standardnotes.org</code> and log in as we did before.</p><p>In the bottom corner, select <code>Extensions</code></p><figure class="kg-card kg-image-card"><img src="/images/2021/02/3-1.jpg" class="kg-image" alt loading="lazy" width="1960" height="2022" srcset="/images/size/w600/2021/02/3-1.jpg 600w, /images/size/w1000/2021/02/3-1.jpg 1000w, /images/size/w1600/2021/02/3-1.jpg 1600w, /images/2021/02/3-1.jpg 1960w" sizes="(min-width: 720px) 720px"></figure><p>You'll see a field that reads <code>Enter Extended Code</code> this is where you'll usually paste your Extensions API Key. But all you need to do is paste your new extensions URL.</p><p>Then hit <code>Submit Code</code></p><figure class="kg-card kg-image-card"><img src="/images/2021/02/4-1.jpg" class="kg-image" alt loading="lazy" width="2000" height="1919" srcset="/images/size/w600/2021/02/4-1.jpg 600w, /images/size/w1000/2021/02/4-1.jpg 1000w, /images/size/w1600/2021/02/4-1.jpg 1600w, /images/2021/02/4-1.jpg 2000w" sizes="(min-width: 720px) 720px"></figure><h3 id="and-we-re-done">And, we're done</h3><p>That's it, providing everything worked, you should now be able to add extensions to your Standard Notes instance.</p><p>Now, this process is complicated, so please don't hesitate to get in touch in the comments if you get stuck. I'd be more than happy to help out with any issues you may face.</p><p>Thanks for reading, please donate to Standard Notes as, without them, none of this would be possible.</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>

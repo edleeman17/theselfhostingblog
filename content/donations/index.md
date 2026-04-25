@@ -1,0 +1,7 @@
+---
+title: 'Donations'
+date: 2021-07-05
+description: 'Hey, thanks so much for coming here, even if it is out of curiosity! As you know, we don''t host any ads on our site, they''re not very privacy friendly! We do have some donation methods available if yo'
+---
+
+<p>Hey, thanks so much for coming here, even if it is out of curiosity!</p><p>As you know, we don't host any ads on our site, they're not very privacy friendly!</p><p>We do have some donation methods available if you're wanting to support the blog:</p><h2 id="github-sponsors">GitHub Sponsors</h2><p><strong>All proceeds go towards maintaining the blog and keeping it running</strong></p><h3 id="want-to-help-in-other-ways">Want to help in other ways?</h3><p>We're always on the lookout for new people to join The Self-Hosting Blog, here's how you might be able to help:</p><ul><li>Becoming an Author</li><li>Maintaining tutorials and keeping them up to date</li><li>Moderating our Matrix and Discord channels</li><li>Contributing useful blog posts to feature in our Monthly Newsletters!</li></ul><p>Head over to our <a href="https://theselfhostingblog.com/contact/">Contact page</a> to get in touch</p><h3 id="just-want-to-say-thanks">Just want to say thanks?</h3><p>Send us an email, let us know how we're doing 😊</p><p><a href="mailto:hello@theselfhostingblog.com">hello@theselfhostingblog.com</a></p>

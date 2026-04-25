@@ -1,0 +1,56 @@
+baseURL = "https://theselfhostingblog.com/"
+languageCode = "en-us"
+title = "The Self-Hosting Blog"
+theme = "PaperMod"
+[pagination]
+  pagerSize = 10
+enableRobotsTXT = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = false
+
+[params]
+  description = "Guides and tutorials on self-hosting, Linux, Docker, and open-source software."
+  author = "Ed"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  defaultTheme = "light"
+  disableThemeToggle = false
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Guides"
+    url = "/tags/guides/"
+    weight = 2
+  [[menu.main]]
+    name = "Ramblings"
+    url = "/tags/ramblings/"
+    weight = 3
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 5
+  [[menu.main]]
+    name = "RSS"
+    url = "/index.xml"
+    weight = 6
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
