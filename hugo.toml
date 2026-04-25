@@ -46,7 +46,7 @@ enableRobotsTXT = true
     url = "/tag/ramblings/"
     weight = 3
   [[menu.main]]
-    name = "About"
+    name = "About Us"
     url = "/about-us/"
     weight = 4
   [[menu.main]]
