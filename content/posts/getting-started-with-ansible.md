@@ -1,5 +1,5 @@
 ---
-author: ed
+author: james
 title: 'Getting started with Ansible'
 date: 2021-09-18
 draft: true

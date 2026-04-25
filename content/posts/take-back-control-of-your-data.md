@@ -1,5 +1,5 @@
 ---
-author: ed
+author: james
 title: 'Why should you should spend the time, effort (and money) on self-hosting?'
 date: 2021-02-17
 description: 'Self-hosting. Why? What''s the point? Everything you could possibly use is already available online. Why should you spend the time and effort (and money) self-hosting projects. A question that I have a'
