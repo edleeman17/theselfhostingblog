@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Self-hosting Papercups.io - Open-source live customer chat with Slack integration!'
 date: 2021-03-23
 description: 'Papercups is an opensource self-hosted chat window that you can add to your site to interact with your visitors instantly. Papercups gives you the ability to reply directly from Slack or using their b'
 cover:
   image: 'https://images.unsplash.com/photo-1484788032193-83c907055f21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDE1fHxwYXBlciUyMGN1cHxlbnwwfHx8fDE2MTYzNjI1NTI&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

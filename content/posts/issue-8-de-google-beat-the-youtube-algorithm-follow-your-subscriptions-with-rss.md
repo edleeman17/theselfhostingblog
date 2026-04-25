@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #8 • De-Google! Beat the YouTube algorithm, follow your subscriptions with RSS.'
 date: 2021-04-05
 description: 'You may have noticed, while viewing your favorite YouTube content creators, that they ask you to "subscribe and click the bell icon" to be notified when they upload.'
 cover:
   image: '/images/2021/04/Newsletter-Header-7.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

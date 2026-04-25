@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #6 • The self-hosted alternative to Trello and Notion'
 date: 2021-03-22
 description: 'The Self-Hosting Blog • Issue #6 Happy Monday! Hope you had a good weekend! Focalboard [https://focalboard.com] has taken the internet by storm this week, introducing itself as an open source, self-ho'
 cover:
   image: '/images/2021/03/Newsletter-Header-6.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

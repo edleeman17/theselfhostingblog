@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Self hosting your own Matrix server on a Raspberry Pi (Updated 2022)'
 date: 2021-07-02
 description: 'How to Self Host Matrix, an open source project that publishes the Matrix open standard for secure, decentralised, real-time communication.'
 cover:
   image: 'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDR8fG1hdHJpeHxlbnwwfHx8fDE2MjUyMzUwNDM&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

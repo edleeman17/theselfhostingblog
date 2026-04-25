@@ -1,9 +1,279 @@
-<!doctype html><html lang=en dir=auto data-theme=light><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Setting Up UFW on Ubuntu Server | The Self-Hosting Blog</title>
-<meta name=keywords content="Guides"><meta name=description content="UFW is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine."><meta name=author content="Ed"><link rel=canonical href=https://theselfhostingblog.com/posts/setting-up-ufw-on-ubuntu-server/><link crossorigin=anonymous href=/assets/css/stylesheet.069d6877cbbe02a9b237ca50e62dbc4a0c24163af241e9c18f3e5cc1ec57ec67.css integrity="sha256-Bp1od8u+AqmyN8pQ5i28SgwkFjryQenBjz5cwexX7Gc=" rel="preload stylesheet" as=style><link rel=icon href=https://theselfhostingblog.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://theselfhostingblog.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://theselfhostingblog.com/favicon-32x32.png><link rel=apple-touch-icon href=https://theselfhostingblog.com/apple-touch-icon.png><link rel=mask-icon href=https://theselfhostingblog.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://theselfhostingblog.com/posts/setting-up-ufw-on-ubuntu-server/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"&&(document.querySelector("html").dataset.theme="dark")</script><meta property="og:url" content="https://theselfhostingblog.com/posts/setting-up-ufw-on-ubuntu-server/"><meta property="og:site_name" content="The Self-Hosting Blog"><meta property="og:title" content="Setting Up UFW on Ubuntu Server"><meta property="og:description" content="UFW is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-12-15T00:00:00+00:00"><meta property="article:modified_time" content="2019-12-15T00:00:00+00:00"><meta property="article:tag" content="Guides"><meta property="og:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ"><meta name=twitter:title content="Setting Up UFW on Ubuntu Server"><meta name=twitter:description content="UFW is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://theselfhostingblog.com/posts/"},{"@type":"ListItem","position":2,"name":"Setting Up UFW on Ubuntu Server","item":"https://theselfhostingblog.com/posts/setting-up-ufw-on-ubuntu-server/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Setting Up UFW on Ubuntu Server","name":"Setting Up UFW on Ubuntu Server","description":"UFW is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine.","keywords":["Guides"],"articleBody":"UFW (Uncomplicated Firewall) is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine.\nThe common use of a firewall is to control the ports that have access from the outside world, for instance, running a website would need ports 80/443 exposed on your network to be able to route your site.\nUFW is different, think of port forwarding, but between local instances. You can lock down internal exposure to port 22 (ssh) for example.\nWhy? What's the point? Security.\nIn the coming weeks, I'll be writing blog posts on how I have set up my jumpbox server. UFW plays a key part in my setup. I have used UFW to only open port 22 on my jumpbox server. I can ssh in, but that's it. No other ports can be attacked or sniffed.\nFrom the jumpbox server I can then only ssh into my other internal instances. This means that if I wanted to ssh into server B I would have to go via the jumpbox A.\nI think I get it, how can I install it? We're running Ubuntu Server on a Raspberry Pi. But these instructions are for all Debian instances, the Raspberry Pi is irrelevant for this tutorial.\nLet's install Install UFW sudo apt-get install ufw\nCheck the status of UFW sudo ufw status\nYou should see that UFW is disabled\nLet's allow some ports, it's really important that you allow your ssh port, otherwise you can lose access when we get round to enabling UFW.\nThe default ssh port is 22 unless you have changed the default port. sudo ufw allow 22\nYou can use the above command to allow the necessary ports for your instance. We're just going to stick with port 22 for this example.\nLet's enable UFW sudo ufw enable\nThat's it You now have a firewall running on your local instance, locked down to be only accessible by port 22.\nIn the future, if you're running services on this box, you'll need to expose any other ports that you want to have access outside of your machine. Let's say you set up OpenVPN, you have to expose port 1194 on the machine it's running on.\nThanks for reading Thanks for reading, hope I've helped in some way!\n","wordCount":"390","inLanguage":"en","image":"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1\u0026q=80\u0026fm=jpg\u0026crop=entropy\u0026cs=tinysrgb\u0026w=2000\u0026fit=max\u0026ixid=eyJhcHBfaWQiOjExNzczfQ","datePublished":"2019-12-15T00:00:00Z","dateModified":"2019-12-15T00:00:00Z","author":{"@type":"Person","name":"Ed"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://theselfhostingblog.com/posts/setting-up-ufw-on-ubuntu-server/"},"publisher":{"@type":"Organization","name":"The Self-Hosting Blog","logo":{"@type":"ImageObject","url":"https://theselfhostingblog.com/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://theselfhostingblog.com/ accesskey=h title="The Self-Hosting Blog (Alt + H)">The Self-Hosting Blog</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://theselfhostingblog.com/ title=Home><span>Home</span></a></li><li><a href=https://theselfhostingblog.com/tags/guides/ title=Guides><span>Guides</span></a></li><li><a href=https://theselfhostingblog.com/tags/ramblings/ title=Ramblings><span>Ramblings</span></a></li><li><a href=https://theselfhostingblog.com/about/ title=About><span>About</span></a></li><li><a href=https://theselfhostingblog.com/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://theselfhostingblog.com/index.xml title=RSS><span>RSS</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=https://theselfhostingblog.com/>Home</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
-<a href=https://theselfhostingblog.com/posts/>Posts</a></nav><h1 class="post-title entry-hint-parent">Setting Up UFW on Ubuntu Server</h1><div class=post-description>UFW is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine.</div><div class=post-meta><span title='2019-12-15 00:00:00 +0000 UTC'>December 15, 2019</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Ed</span></div></header><figure class=entry-cover><img loading=eager src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt></figure><details class=toc><summary accesskey=c title="(Alt + C)"><span class=title>Table of Contents</span></summary><div class=inner><ul><li><a href=#whywhatsthepoint aria-label="Why? What's the point?">Why? What's the point?</a></li><li><a href=#ithinkigetithowcaniinstallit aria-label="I think I get it, how can I install it?">I think I get it, how can I install it?</a><ul><li><a href=#letsinstall aria-label="Let's install">Let's install</a></li></ul></li><li><a href=#thatsit aria-label="That's it">That's it</a></li><li><a href=#thanksforreading aria-label="Thanks for reading">Thanks for reading</a></li></ul></div></details><div class="post-content md-content"><p><a href=https://help.ubuntu.com/community/UFW>UFW</a> (Uncomplicated Firewall) is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine.</p><p>The common use of a firewall is to control the ports that have access from the outside world, for instance, running a website would need ports <code>80</code>/<code>443</code> exposed on your network to be able to route your site.</p><p>UFW is different, think of port forwarding, but between local instances. You can lock down internal exposure to port <code>22</code> (<code>ssh</code>) for example.</p><h2 id=whywhatsthepoint>Why? What's the point?<a hidden class=anchor aria-hidden=true href=#whywhatsthepoint>#</a></h2><p>Security.</p><p>In the coming weeks, I'll be writing blog posts on how I have set up my jumpbox server. UFW plays a key part in my setup. I have used UFW to only open port 22 on my jumpbox server. I can <code>ssh</code> in, but that's it. No other ports can be attacked or sniffed.</p><p>From the jumpbox server I can then <strong>only</strong> <code>ssh</code> into my other internal instances. This means that if I wanted to <code>ssh</code> into server <code>B</code> I would have to go via the jumpbox <code>A</code>.</p><h2 id=ithinkigetithowcaniinstallit>I think I get it, how can I install it?<a hidden class=anchor aria-hidden=true href=#ithinkigetithowcaniinstallit>#</a></h2><p>We're running <a href=https://ubuntu.com/download/raspberry-pi>Ubuntu Server on a Raspberry Pi</a>. But these instructions are for all Debian instances, the Raspberry Pi is irrelevant for this tutorial.</p><h3 id=letsinstall>Let's install<a hidden class=anchor aria-hidden=true href=#letsinstall>#</a></h3><ol><li>Install UFW</li></ol><p><code>sudo apt-get install ufw</code></p><ol start=2><li>Check the status of UFW</li></ol><p><code>sudo ufw status</code></p><p>You should see that UFW is <strong>disabled</strong></p><ol start=3><li>Let's allow some ports, it's really important that you allow your <code>ssh</code> port, otherwise you can lose access when we get round to enabling UFW.<br>The default <code>ssh</code> port is <strong>22</strong> unless you have changed the default port.</li></ol><p><code>sudo ufw allow 22</code></p><p>You can use the above command to allow the necessary ports for your instance. We're just going to stick with port <code>22</code> for this example.</p><ol start=4><li>Let's enable UFW</li></ol><p><code>sudo ufw enable</code></p><h2 id=thatsit>That's it<a hidden class=anchor aria-hidden=true href=#thatsit>#</a></h2><p>You now have a firewall running on your local instance, locked down to be only accessible by port <code>22</code>.</p><p>In the future, if you're running services on this box, you'll need to expose any other ports that you want to have access outside of your machine. Let's say you set up <a href=https://openvpn.net/>OpenVPN</a>, you have to expose port <code>1194</code> on the machine it's running on.</p><h2 id=thanksforreading>Thanks for reading<a hidden class=anchor aria-hidden=true href=#thanksforreading>#</a></h2><p>Thanks for reading, hope I've helped in some way!</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://theselfhostingblog.com/tags/guides/>Guides</a></li></ul><nav class=paginav><a class=prev href=https://theselfhostingblog.com/posts/how-to-route-nginx-through-a-child-nginx-configuration-jumpbox-to-web-server-configuration/><span class=title>« Prev</span>
-<span>How to Route Nginx Through a Child Nginx Configuration - Jumpbox to Web Server Configuration</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://theselfhostingblog.com/>The Self-Hosting Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Setting Up UFW on Ubuntu Server | The Self-Hosting Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="UFW is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine.">
+<meta name="author" content="ed">
+<link rel="canonical" href="http://192.168.1.158:1313/posts/setting-up-ufw-on-ubuntu-server/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.28834518a10a1d09fe622eb42326e916004b51d4064484a3b9eca2a509569d20.css" integrity="sha256-KINFGKEKHQn&#43;Yi60IybpFgBLUdQGRISjueyipQlWnSA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://192.168.1.158:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.1.158:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.1.158:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://192.168.1.158:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://192.168.1.158:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://192.168.1.158:1313/posts/setting-up-ufw-on-ubuntu-server/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://192.168.1.158:1313/" accesskey="h" title="The Self-Hosting Blog (Alt + H)">The Self-Hosting Blog</a>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://192.168.1.158:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/tag/guides/" title="Guides">
+                    <span>Guides</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/tag/ramblings/" title="Ramblings">
+                    <span>Ramblings</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/about-us/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    <a href='http://192.168.1.158:1313/'>Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="http://192.168.1.158:1313/posts/">Posts</a></nav>
+    <h1 class="post-title entry-hint-parent">
+      Setting Up UFW on Ubuntu Server
+    </h1>
+    <div class="post-description">
+      UFW is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine.
+    </div>
+    <div class="post-meta"><span title='2019-12-15 00:00:00 +0000 UTC'>December 15, 2019</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>ed</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt="">
+        </a>
+        
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#whywhatsthepoint" aria-label="Why? What&#39;s the point?">Why? What's the point?</a></li>
+            <li>
+                <a href="#ithinkigetithowcaniinstallit" aria-label="I think I get it, how can I install it?">I think I get it, how can I install it?</a><ul>
+                    
+            <li>
+                <a href="#letsinstall" aria-label="Let&#39;s install">Let's install</a></li></ul>
+            </li>
+            <li>
+                <a href="#thatsit" aria-label="That&#39;s it">That's it</a></li>
+            <li>
+                <a href="#thanksforreading" aria-label="Thanks for reading">Thanks for reading</a>
+            </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><p><a href="https://help.ubuntu.com/community/UFW">UFW</a> (Uncomplicated Firewall) is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine.</p>
+<p>The common use of a firewall is to control the ports that have access from the outside world, for instance, running a website would need ports <code>80</code>/<code>443</code> exposed on your network to be able to route your site.</p>
+<p>UFW is different, think of port forwarding, but between local instances. You can lock down internal exposure to port <code>22</code> (<code>ssh</code>) for example.</p>
+<h2 id="whywhatsthepoint">Why? What's the point?<a hidden class="anchor" aria-hidden="true" href="#whywhatsthepoint">#</a></h2>
+<p>Security.</p>
+<p>In the coming weeks, I'll be writing blog posts on how I have set up my jumpbox server. UFW plays a key part in my setup. I have used UFW to only open port 22 on my jumpbox server. I can <code>ssh</code> in, but that's it. No other ports can be attacked or sniffed.</p>
+<p>From the jumpbox server I can then <strong>only</strong> <code>ssh</code> into my other internal instances. This means that if I wanted to <code>ssh</code> into server <code>B</code> I would have to go via the jumpbox <code>A</code>.</p>
+<h2 id="ithinkigetithowcaniinstallit">I think I get it, how can I install it?<a hidden class="anchor" aria-hidden="true" href="#ithinkigetithowcaniinstallit">#</a></h2>
+<p>We're running <a href="https://ubuntu.com/download/raspberry-pi">Ubuntu Server on a Raspberry Pi</a>. But these instructions are for all Debian instances, the Raspberry Pi is irrelevant for this tutorial.</p>
+<h3 id="letsinstall">Let's install<a hidden class="anchor" aria-hidden="true" href="#letsinstall">#</a></h3>
+<ol>
+<li>Install UFW</li>
+</ol>
+<p><code>sudo apt-get install ufw</code></p>
+<ol start="2">
+<li>Check the status of UFW</li>
+</ol>
+<p><code>sudo ufw status</code></p>
+<p>You should see that UFW is <strong>disabled</strong></p>
+<ol start="3">
+<li>Let's allow some ports, it's really important that you allow your <code>ssh</code> port, otherwise you can lose access when we get round to enabling UFW.<br>
+The default <code>ssh</code> port is <strong>22</strong> unless you have changed the default port.</li>
+</ol>
+<p><code>sudo ufw allow 22</code></p>
+<p>You can use the above command to allow the necessary ports for your instance. We're just going to stick with port <code>22</code> for this example.</p>
+<ol start="4">
+<li>Let's enable UFW</li>
+</ol>
+<p><code>sudo ufw enable</code></p>
+<h2 id="thatsit">That's it<a hidden class="anchor" aria-hidden="true" href="#thatsit">#</a></h2>
+<p>You now have a firewall running on your local instance, locked down to be only accessible by port <code>22</code>.</p>
+<p>In the future, if you're running services on this box, you'll need to expose any other ports that you want to have access outside of your machine. Let's say you set up <a href="https://openvpn.net/">OpenVPN</a>, you have to expose port <code>1194</code> on the machine it's running on.</p>
+<h2 id="thanksforreading">Thanks for reading<a hidden class="anchor" aria-hidden="true" href="#thanksforreading">#</a></h2>
+<p>Thanks for reading, hope I've helped in some way!</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://192.168.1.158:1313/posts/how-to-route-nginx-through-a-child-nginx-configuration-jumpbox-to-web-server-configuration/">
+    <span class="title">« Prev</span>
+    <span>How to Route Nginx Through a Child Nginx Configuration - Jumpbox to Web Server Configuration</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://192.168.1.158:1313/">The Self-Hosting Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,10 +1,12 @@
 ---
+author: ed
 title: '10 of the BEST Self-hosting Subreddits To Follow (In 2021)'
 date: 2021-02-07
 description: 'I''ve been using Reddit for many years now, and I have curated a list of Subreddits that I believe cover all the countless issues I have encountered during my journey of self-hosting.'
 cover:
   image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDF8fGNvbXB1dGVyfGVufDB8fHw&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Ramblings'
 ---
 

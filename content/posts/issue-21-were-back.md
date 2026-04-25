@@ -1,10 +1,12 @@
 ---
+author: ed
 title: '📰Issue #21 • We''re back'
 date: 2022-02-07
 description: 'It''s been a while! Hope that you had an awesome holiday period and new year 🎉 Apologies for our lack of newsletters! I''m afraid that we''ve been quite busy with other commitments.'
 cover:
   image: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fG5ld3N8ZW58MHx8fHwxNjQ0MjMxNDcx&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

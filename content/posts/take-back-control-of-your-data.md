@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Why should you should spend the time, effort (and money) on self-hosting?'
 date: 2021-02-17
 description: 'Self-hosting. Why? What''s the point? Everything you could possibly use is already available online. Why should you spend the time and effort (and money) self-hosting projects. A question that I have a'
 cover:
   image: 'https://images.unsplash.com/photo-1495592822108-9e6261896da8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDl8fGRhdGF8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Ramblings'
 ---
 

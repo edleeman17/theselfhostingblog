@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #18 • Blog expansion over to Forem'
 date: 2021-08-03
 description: '📰 The Self-Hosting Blog • Issue #18 What''s new? We''ve been playing around with Forem [https://www.forem.com/] the backend that powers dev.to [https://dev.to]. We''ve been thinking about bringing the co'
 cover:
   image: '/images/2021/08/Newsletter-Header-3-1.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

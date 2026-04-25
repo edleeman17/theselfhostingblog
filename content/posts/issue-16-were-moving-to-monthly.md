@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #16 • We''re moving to monthly'
 date: 2021-05-31
 description: '📰 The Self-Hosting Blog • Issue #16 Happy Monday! I have some news, I don''t feel like I am producing quality when I write-up the Weekly Newsletter. Therefore, James and I have decided to run the Newsl'
 cover:
   image: '/images/2021/05/Newsletter-Header-3-1.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

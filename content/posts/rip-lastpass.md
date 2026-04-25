@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #2 • RIP LastPass...'
 date: 2021-02-21
 description: 'The Self-Hosting Blog Ed here at The Self-Hosting Blog. I hope you''re having a great week! This week, LastPass announced that they are feature-locking their free tier. Forcing users to choose whether '
 cover:
   image: '/images/2021/03/Newsletter-Header-3.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

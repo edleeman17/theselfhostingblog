@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Configuring Vim for Node Js Development'
 date: 2020-07-28
 description: 'An overview of the ideal vim plugins to use for Node Js development, with config file examples'
 cover:
   image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
-tags:
+  relative: false
+tag:
   - 'Ramblings'
 ---
 

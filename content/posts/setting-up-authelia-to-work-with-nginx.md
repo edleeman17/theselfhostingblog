@@ -1,11 +1,13 @@
 ---
+author: ed
 title: 'Setting up Authelia to work with Nginx'
 date: 2021-08-25
 draft: true
 description: 'What is Authelia? Have you ever thought to yourself, "I want to make something publicly available, but I don''t want everyone to be able to see it. Be cool if I could have a login screen"? Well, if so,'
 cover:
   image: 'https://images.unsplash.com/photo-1603899122634-f086ca5f5ddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDZ8fGxvY2t8ZW58MHx8fHwxNjI5OTE5MzUw&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

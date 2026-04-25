@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #12 • Save time by using the Raspberry Pi Imager''s hidden feature'
 date: 2021-05-03
 description: 'Forget needing to add your ssh and wpa_supplicant files! Here''s a way to do it from the Raspberry Pi Imager'
 cover:
   image: '/images/2021/05/Newsletter-Header.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Setting Up UFW on Ubuntu Server'
 date: 2019-12-15
 description: 'UFW is a program that allows you to internally control ports on your Linux instance. This gives you the ability to forward ports from your machine.'
 cover:
   image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

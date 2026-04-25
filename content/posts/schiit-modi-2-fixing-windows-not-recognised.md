@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Schiit Modi 2 - Fixing Windows not recognizing USB device'
 date: 2020-09-27
 description: 'Schiit Modi 2 - Fixing Windows not recognizing USB device'
 cover:
   image: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
-tags:
+  relative: false
+tag:
   - 'Ramblings'
 ---
 

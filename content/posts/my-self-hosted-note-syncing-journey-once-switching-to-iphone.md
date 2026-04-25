@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'My Self Hosted Note Syncing Journey Once Switching to Iphone'
 date: 2020-02-25
 description: 'Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.'
 cover:
   image: 'https://images.unsplash.com/photo-1483546416237-76fd26bbcdd1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
-tags:
+  relative: false
+tag:
   - 'Ramblings'
 ---
 

@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Archiving ProtonMail Emails on a headless Ubuntu instance'
 date: 2020-11-16
 description: 'I wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.'
 cover:
   image: 'https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

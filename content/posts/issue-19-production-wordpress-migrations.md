@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #19 • Production Wordpress migrations'
 date: 2021-09-07
 description: 'Previously running in dedicated Wordpress hosting, now running inside Docker containers. I''ll probably do a write-up just to share my experience of fighting with DNS, Certificates, Duplication Tools, '
 cover:
   image: 'https://images.unsplash.com/photo-1560472354-0088b5dc9d8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fHdvcmRwcmVzc3xlbnwwfHx8fDE2MzEwMDUzNjk&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

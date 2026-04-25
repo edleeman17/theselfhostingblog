@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #17 • New Horizons'
 date: 2021-07-01
 description: 'Happy Monday! Things have been quiet here, both of us have had far too many distractions this past month! Having said that, here is our first monthly dose of all things self hosting!'
 cover:
   image: '/images/2021/07/Newsletter-Header-3-1.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

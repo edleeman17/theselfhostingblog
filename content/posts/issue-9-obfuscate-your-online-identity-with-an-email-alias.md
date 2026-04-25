@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #9 • Obfuscate your online identity with an email alias'
 date: 2021-04-12
 description: 'In this weeks'' issue, I''m going to talk a little about setting up SimpleLogin, we''ll be doing a full tutorial post in the future but this is more to make you aware of the service and how it can protec'
 cover:
   image: '/images/2021/04/Newsletter-Header.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

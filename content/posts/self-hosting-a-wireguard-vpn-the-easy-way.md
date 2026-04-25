@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Self-hosting a Wireguard VPN, the easy way'
 date: 2020-09-13
 description: 'We''re going to cover setting up a Wireguard VPN on your home server or cloud service. For secure remote access to your internal network, or a cheap, secure connection to a cloud service for some incre'
 cover:
   image: 'https://images.unsplash.com/photo-1542577195-d562c6698ff3?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

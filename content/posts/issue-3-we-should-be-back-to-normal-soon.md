@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #3 • We should be back to normal soon'
 date: 2021-03-01
 description: 'The Self-Hosting Blog • Issue #3 Ed here at The Self-Hosting Blog. Happy Monday! Hope you had a good weekend. If you''re in the UK, we''ve had some good news that everything should be back to normal by '
 cover:
   image: '/images/2021/03/Newsletter-Header-2.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Setting up Focalboard - A self-hosted alternative to Trello and Notion'
 date: 2021-03-20
 description: 'Focalboard is a self-hosted alternative to tools such as Notion or Trello which you can run on your own instance. Focalboard helps with tracking and organising your own work, as well as across a team.'
 cover:
   image: '/images/2021/03/Screenshot-2021-03-20-181743.png'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

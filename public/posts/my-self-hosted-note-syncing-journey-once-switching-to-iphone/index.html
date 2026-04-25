@@ -1,11 +1,276 @@
-<!doctype html><html lang=en dir=auto data-theme=light><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>My Self Hosted Note Syncing Journey Once Switching to Iphone | The Self-Hosting Blog</title>
-<meta name=keywords content="Ramblings"><meta name=description content="Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey."><meta name=author content="Ed"><link rel=canonical href=https://theselfhostingblog.com/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/><link crossorigin=anonymous href=/assets/css/stylesheet.069d6877cbbe02a9b237ca50e62dbc4a0c24163af241e9c18f3e5cc1ec57ec67.css integrity="sha256-Bp1od8u+AqmyN8pQ5i28SgwkFjryQenBjz5cwexX7Gc=" rel="preload stylesheet" as=style><link rel=icon href=https://theselfhostingblog.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://theselfhostingblog.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://theselfhostingblog.com/favicon-32x32.png><link rel=apple-touch-icon href=https://theselfhostingblog.com/apple-touch-icon.png><link rel=mask-icon href=https://theselfhostingblog.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://theselfhostingblog.com/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"&&(document.querySelector("html").dataset.theme="dark")</script><meta property="og:url" content="https://theselfhostingblog.com/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/"><meta property="og:site_name" content="The Self-Hosting Blog"><meta property="og:title" content="My Self Hosted Note Syncing Journey Once Switching to Iphone"><meta property="og:description" content="Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-02-25T00:00:00+00:00"><meta property="article:modified_time" content="2020-02-25T00:00:00+00:00"><meta property="article:tag" content="Ramblings"><meta property="og:image" content="https://images.unsplash.com/photo-1483546416237-76fd26bbcdd1?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://images.unsplash.com/photo-1483546416237-76fd26bbcdd1?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ"><meta name=twitter:title content="My Self Hosted Note Syncing Journey Once Switching to Iphone"><meta name=twitter:description content="Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://theselfhostingblog.com/posts/"},{"@type":"ListItem","position":2,"name":"My Self Hosted Note Syncing Journey Once Switching to Iphone","item":"https://theselfhostingblog.com/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"My Self Hosted Note Syncing Journey Once Switching to Iphone","name":"My Self Hosted Note Syncing Journey Once Switching to Iphone","description":"Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.","keywords":["Ramblings"],"articleBody":"Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.\nMy existing solution with Syncthing and VS Code I loved my original solution. I had recently discovered Syncthing and got it set up on my self hosted solution in my loft. I had a central sync server and then a node on each of my devices, including my Huawei P20 Pro.\nI could keep my extensive markdown nodes on every device and sync them without even thinking about it. It just worked, I wasn't tied into a service as the nodes are written in Markdown.\nEverything just worked.\nSwitching to iPhone I made the switch to the iPhone due to privacy concerns with Android. I have recently boycotted all my Google services and switched over to a self-hosted solution. Part of this meant getting rid of my Android.\nEverything started great with the iPhone, the interface is great, everything just works.\nApart from Syncthing.\nThere's currently no iOS client for Syncthing.\nSo what now? I started looking at other app alternatives, Bear, Markdown Notes, etc.. but all of them locked down where the files were saved on the iPhone, I couldn't access them from a file explorer on the iPhone. Something that could easily be done with Android.\nBumped into Resilio, not self-hosted, but achieves the whole decentralized syncing that I loved about Syncthing. Cool, I managed to get my notes syncing to a Resilio folder on my iPhone. Bingo!\nBut wait, what happens when I try and edit a note? It opens a copy of the note in a markdown app. Not ideal, I just want to view and edit notes, how hard can it be!\nI give up.\nStandard Notes I had a love-hate relationship with Standard Notes. I loved the UI, the syncing was pretty good, it has an iOS app! and it can be self-hosted, amazing.\nBut a lot of the features are paid. So if I wanted to write in Markdown, which I do, I had to pay for the extensions. I had to think to myself, how badly do I want notes on my iPhone?\nI went without notes for a week, it nearly killed me. So I bit the bullet and settled for one month at £9.99, I thought I'd give it a try.\nLoved it, I heavily use Markdown Basic, Simple Task Editor and Secure Spreadsheets extensions. But can I justify £10 a month?\nStandard Notes Extensions Standard Notes being open-source meant that I could have a poke around in its git repository. I did a global search on Github for \"Standard Notes\" and I bumped into a repository by Github User jonhadfield who has collected some awesome Standard Notes extensions. Browsing his README.md I spotted the repository Extensions Repository Builder. This would allow me to self-host my extensions rather than paying the monthly fee!\nI set up Extensions Repository Builder on my internal host and bingo, it just worked, amazing.\nFull E2E Sync So after a very long journey of pulling my hair out and re-evaluating how much these notes meant to me. I finally had an end-to-end solution for storing my notes and syncthing between all of my devices.\nWhere I'm going next I have a did.txt file which I log to every day with what I did that day, it helps with our daily standups so that I can remember what I did the previous day. On jonhadfield's Github, there was also a link for standardnotes-fs which allows you to mount your Standard Notes as files using fuse. This means I can set up my did.txt command to edit my Did note.\nI'd also like to hook up iOS reminders to a reminders section in Standard Notes. I own an Apple Watch and I tend to use Siri on it quite often. So I need to work out some way to sync these with my standard notes.\n","wordCount":"663","inLanguage":"en","image":"https://images.unsplash.com/photo-1483546416237-76fd26bbcdd1?ixlib=rb-1.2.1\u0026q=80\u0026fm=jpg\u0026crop=entropy\u0026cs=tinysrgb\u0026w=2000\u0026fit=max\u0026ixid=eyJhcHBfaWQiOjExNzczfQ","datePublished":"2020-02-25T00:00:00Z","dateModified":"2020-02-25T00:00:00Z","author":{"@type":"Person","name":"Ed"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://theselfhostingblog.com/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/"},"publisher":{"@type":"Organization","name":"The Self-Hosting Blog","logo":{"@type":"ImageObject","url":"https://theselfhostingblog.com/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://theselfhostingblog.com/ accesskey=h title="The Self-Hosting Blog (Alt + H)">The Self-Hosting Blog</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://theselfhostingblog.com/ title=Home><span>Home</span></a></li><li><a href=https://theselfhostingblog.com/tags/guides/ title=Guides><span>Guides</span></a></li><li><a href=https://theselfhostingblog.com/tags/ramblings/ title=Ramblings><span>Ramblings</span></a></li><li><a href=https://theselfhostingblog.com/about/ title=About><span>About</span></a></li><li><a href=https://theselfhostingblog.com/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://theselfhostingblog.com/index.xml title=RSS><span>RSS</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=https://theselfhostingblog.com/>Home</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
-<a href=https://theselfhostingblog.com/posts/>Posts</a></nav><h1 class="post-title entry-hint-parent">My Self Hosted Note Syncing Journey Once Switching to Iphone</h1><div class=post-description>Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.</div><div class=post-meta><span title='2020-02-25 00:00:00 +0000 UTC'>February 25, 2020</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Ed</span></div></header><figure class=entry-cover><img loading=eager src="https://images.unsplash.com/photo-1483546416237-76fd26bbcdd1?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt></figure><details class=toc><summary accesskey=c title="(Alt + C)"><span class=title>Table of Contents</span></summary><div class=inner><ul><li><a href=#myexistingsolutionwithsyncthingandvscode aria-label="My existing solution with Syncthing and VS Code">My existing solution with Syncthing and VS Code</a></li><li><a href=#switchingtoiphone aria-label="Switching to iPhone">Switching to iPhone</a></li><li><a href=#standardnotes aria-label="Standard Notes">Standard Notes</a></li><li><a href=#standardnotesextensions aria-label="Standard Notes Extensions">Standard Notes Extensions</a></li><li><a href=#fulle2esync aria-label="Full E2E Sync">Full E2E Sync</a></li><li><a href=#whereimgoingnext aria-label="Where I'm going next">Where I'm going next</a></li></ul></div></details><div class="post-content md-content"><p>Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.</p><h2 id=myexistingsolutionwithsyncthingandvscode>My existing solution with Syncthing and VS Code<a hidden class=anchor aria-hidden=true href=#myexistingsolutionwithsyncthingandvscode>#</a></h2><p>I <strong>loved</strong> my original solution. I had recently discovered <a href=https://syncthing.net/>Syncthing</a> and got it set up on my self hosted solution in my loft. I had a central sync server and then a node on each of my devices, including my Huawei P20 Pro.</p><p>I could keep my extensive markdown nodes on every device and sync them without even thinking about it. It just worked, I wasn't tied into a service as the nodes are written in Markdown.</p><p>Everything just <strong>worked</strong>.</p><h2 id=switchingtoiphone>Switching to iPhone<a hidden class=anchor aria-hidden=true href=#switchingtoiphone>#</a></h2><p>I made the switch to the iPhone due to privacy concerns with Android. I have recently boycotted all my Google services and switched over to a self-hosted solution. Part of this meant getting rid of my Android.</p><p>Everything started great with the iPhone, the interface is great, everything just works.</p><p>Apart from Syncthing.</p><p>There's currently no iOS client for Syncthing.</p><p>So what now? I started looking at other app alternatives, Bear, Markdown Notes, etc.. but all of them locked down where the files were saved on the iPhone, I couldn't access them from a file explorer on the iPhone. Something that could easily be done with Android.</p><p>Bumped into <a href=https://www.resilio.com/>Resilio</a>, not self-hosted, but achieves the whole decentralized syncing that I loved about Syncthing. Cool, I managed to get my notes syncing to a Resilio folder on my iPhone. Bingo!</p><p>But wait, what happens when I try and edit a note? It opens a <em>copy</em> of the note in a markdown app. Not ideal, I just want to view and edit notes, how hard can it be!</p><p>I give up.</p><h2 id=standardnotes>Standard Notes<a hidden class=anchor aria-hidden=true href=#standardnotes>#</a></h2><p>I <strong>had</strong> a love-hate relationship with <a href=https://standardnotes.org/>Standard Notes</a>. I loved the UI, the syncing was pretty good, it has an iOS app! and it can be self-hosted, amazing.</p><p>But a lot of the features are paid. So if I wanted to write in Markdown, which I do, I had to pay for the extensions. I had to think to myself, how badly do I want notes on my iPhone?</p><p>I went without notes for a week, it nearly killed me. So I bit the bullet and settled for one month at £9.99, I thought I'd give it a try.</p><p>Loved it, I heavily use Markdown Basic, Simple Task Editor and Secure Spreadsheets extensions. But can I justify £10 a month?</p><h2 id=standardnotesextensions>Standard Notes Extensions<a hidden class=anchor aria-hidden=true href=#standardnotesextensions>#</a></h2><p>Standard Notes being open-source meant that I could have a poke around in its git repository. I did a global search on Github for "Standard Notes" and I bumped into a repository by Github User <a href=https://github.com/jonhadfield/awesome-standard-notes>jonhadfield</a> who has collected some awesome Standard Notes extensions. Browsing his <code>README.md</code> I spotted the repository <a href=https://github.com/iganeshk/standardnotes-extensions>Extensions Repository Builder</a>. This would allow me to self-host my extensions rather than paying the monthly fee!</p><p>I set up Extensions Repository Builder on my internal host and bingo, it just worked, amazing.</p><h2 id=fulle2esync>Full E2E Sync<a hidden class=anchor aria-hidden=true href=#fulle2esync>#</a></h2><p>So after a very long journey of pulling my hair out and re-evaluating how much these notes meant to me. I finally had an end-to-end solution for storing my notes and syncthing between all of my devices.</p><h2 id=whereimgoingnext>Where I'm going next<a hidden class=anchor aria-hidden=true href=#whereimgoingnext>#</a></h2><p>I have a <a href=https://theptrk.com/2018/07/11/did-txt-file/>did.txt</a> file which I log to every day with what I did that day, it helps with our daily standups so that I can remember what I did the previous day. On <a href=https://github.com/jonhadfield/awesome-standard-notes>jonhadfield's</a> Github, there was also a link for <a href=https://github.com/tannercollin/standardnotes-fs>standardnotes-fs</a> which allows you to mount your Standard Notes as files using fuse. This means I can set up my did.txt command to edit my Did note.</p><p>I'd also like to hook up iOS reminders to a reminders section in Standard Notes. I own an Apple Watch and I tend to use Siri on it quite often. So I need to work out some way to sync these with my standard notes.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://theselfhostingblog.com/tags/ramblings/>Ramblings</a></li></ul><nav class=paginav><a class=prev href=https://theselfhostingblog.com/posts/configuring-vim-for-node-js-development/><span class=title>« Prev</span>
-<span>Configuring Vim for Node Js Development</span>
-</a><a class=next href=https://theselfhostingblog.com/posts/how-to-route-nginx-through-a-child-nginx-configuration-jumpbox-to-web-server-configuration/><span class=title>Next »</span>
-<span>How to Route Nginx Through a Child Nginx Configuration - Jumpbox to Web Server Configuration</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://theselfhostingblog.com/>The Self-Hosting Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>My Self Hosted Note Syncing Journey Once Switching to Iphone | The Self-Hosting Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.">
+<meta name="author" content="ed">
+<link rel="canonical" href="http://192.168.1.158:1313/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.28834518a10a1d09fe622eb42326e916004b51d4064484a3b9eca2a509569d20.css" integrity="sha256-KINFGKEKHQn&#43;Yi60IybpFgBLUdQGRISjueyipQlWnSA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://192.168.1.158:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.1.158:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.1.158:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://192.168.1.158:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://192.168.1.158:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://192.168.1.158:1313/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://192.168.1.158:1313/" accesskey="h" title="The Self-Hosting Blog (Alt + H)">The Self-Hosting Blog</a>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://192.168.1.158:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/tag/guides/" title="Guides">
+                    <span>Guides</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/tag/ramblings/" title="Ramblings">
+                    <span>Ramblings</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/about-us/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    <a href='http://192.168.1.158:1313/'>Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="http://192.168.1.158:1313/posts/">Posts</a></nav>
+    <h1 class="post-title entry-hint-parent">
+      My Self Hosted Note Syncing Journey Once Switching to Iphone
+    </h1>
+    <div class="post-description">
+      Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.
+    </div>
+    <div class="post-meta"><span title='2020-02-25 00:00:00 +0000 UTC'>February 25, 2020</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>ed</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://images.unsplash.com/photo-1483546416237-76fd26bbcdd1?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://images.unsplash.com/photo-1483546416237-76fd26bbcdd1?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt="">
+        </a>
+        
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#myexistingsolutionwithsyncthingandvscode" aria-label="My existing solution with Syncthing and VS Code">My existing solution with Syncthing and VS Code</a></li>
+            <li>
+                <a href="#switchingtoiphone" aria-label="Switching to iPhone">Switching to iPhone</a></li>
+            <li>
+                <a href="#standardnotes" aria-label="Standard Notes">Standard Notes</a></li>
+            <li>
+                <a href="#standardnotesextensions" aria-label="Standard Notes Extensions">Standard Notes Extensions</a></li>
+            <li>
+                <a href="#fulle2esync" aria-label="Full E2E Sync">Full E2E Sync</a></li>
+            <li>
+                <a href="#whereimgoingnext" aria-label="Where I&#39;m going next">Where I'm going next</a>
+            </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><p>Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.</p>
+<h2 id="myexistingsolutionwithsyncthingandvscode">My existing solution with Syncthing and VS Code<a hidden class="anchor" aria-hidden="true" href="#myexistingsolutionwithsyncthingandvscode">#</a></h2>
+<p>I <strong>loved</strong> my original solution. I had recently discovered <a href="https://syncthing.net/">Syncthing</a> and got it set up on my self hosted solution in my loft. I had a central sync server and then a node on each of my devices, including my Huawei P20 Pro.</p>
+<p>I could keep my extensive markdown nodes on every device and sync them without even thinking about it. It just worked, I wasn't tied into a service as the nodes are written in Markdown.</p>
+<p>Everything just <strong>worked</strong>.</p>
+<h2 id="switchingtoiphone">Switching to iPhone<a hidden class="anchor" aria-hidden="true" href="#switchingtoiphone">#</a></h2>
+<p>I made the switch to the iPhone due to privacy concerns with Android. I have recently boycotted all my Google services and switched over to a self-hosted solution. Part of this meant getting rid of my Android.</p>
+<p>Everything started great with the iPhone, the interface is great, everything just works.</p>
+<p>Apart from Syncthing.</p>
+<p>There's currently no iOS client for Syncthing.</p>
+<p>So what now? I started looking at other app alternatives, Bear, Markdown Notes, etc.. but all of them locked down where the files were saved on the iPhone, I couldn't access them from a file explorer on the iPhone. Something that could easily be done with Android.</p>
+<p>Bumped into <a href="https://www.resilio.com/">Resilio</a>, not self-hosted, but achieves the whole decentralized syncing that I loved about Syncthing. Cool, I managed to get my notes syncing to a Resilio folder on my iPhone. Bingo!</p>
+<p>But wait, what happens when I try and edit a note? It opens a <em>copy</em> of the note in a markdown app. Not ideal, I just want to view and edit notes, how hard can it be!</p>
+<p>I give up.</p>
+<h2 id="standardnotes">Standard Notes<a hidden class="anchor" aria-hidden="true" href="#standardnotes">#</a></h2>
+<p>I <strong>had</strong> a love-hate relationship with <a href="https://standardnotes.org/">Standard Notes</a>. I loved the UI, the syncing was pretty good, it has an iOS app! and it can be self-hosted, amazing.</p>
+<p>But a lot of the features are paid. So if I wanted to write in Markdown, which I do, I had to pay for the extensions. I had to think to myself, how badly do I want notes on my iPhone?</p>
+<p>I went without notes for a week, it nearly killed me. So I bit the bullet and settled for one month at £9.99, I thought I'd give it a try.</p>
+<p>Loved it, I heavily use Markdown Basic, Simple Task Editor and Secure Spreadsheets extensions. But can I justify £10 a month?</p>
+<h2 id="standardnotesextensions">Standard Notes Extensions<a hidden class="anchor" aria-hidden="true" href="#standardnotesextensions">#</a></h2>
+<p>Standard Notes being open-source meant that I could have a poke around in its git repository. I did a global search on Github for &quot;Standard Notes&quot; and I bumped into a repository by Github User <a href="https://github.com/jonhadfield/awesome-standard-notes">jonhadfield</a> who has collected some awesome Standard Notes extensions. Browsing his <code>README.md</code> I spotted the repository <a href="https://github.com/iganeshk/standardnotes-extensions">Extensions Repository Builder</a>. This would allow me to self-host my extensions rather than paying the monthly fee!</p>
+<p>I set up Extensions Repository Builder on my internal host and bingo, it just worked, amazing.</p>
+<h2 id="fulle2esync">Full E2E Sync<a hidden class="anchor" aria-hidden="true" href="#fulle2esync">#</a></h2>
+<p>So after a very long journey of pulling my hair out and re-evaluating how much these notes meant to me. I finally had an end-to-end solution for storing my notes and syncthing between all of my devices.</p>
+<h2 id="whereimgoingnext">Where I'm going next<a hidden class="anchor" aria-hidden="true" href="#whereimgoingnext">#</a></h2>
+<p>I have a <a href="https://theptrk.com/2018/07/11/did-txt-file/">did.txt</a> file which I log to every day with what I did that day, it helps with our daily standups so that I can remember what I did the previous day. On <a href="https://github.com/jonhadfield/awesome-standard-notes">jonhadfield's</a> Github, there was also a link for <a href="https://github.com/tannercollin/standardnotes-fs">standardnotes-fs</a> which allows you to mount your Standard Notes as files using fuse. This means I can set up my did.txt command to edit my Did note.</p>
+<p>I'd also like to hook up iOS reminders to a reminders section in Standard Notes. I own an Apple Watch and I tend to use Siri on it quite often. So I need to work out some way to sync these with my standard notes.</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://192.168.1.158:1313/posts/configuring-vim-for-node-js-development/">
+    <span class="title">« Prev</span>
+    <span>Configuring Vim for Node Js Development</span>
+  </a>
+  <a class="next" href="http://192.168.1.158:1313/posts/how-to-route-nginx-through-a-child-nginx-configuration-jumpbox-to-web-server-configuration/">
+    <span class="title">Next »</span>
+    <span>How to Route Nginx Through a Child Nginx Configuration - Jumpbox to Web Server Configuration</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://192.168.1.158:1313/">The Self-Hosting Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

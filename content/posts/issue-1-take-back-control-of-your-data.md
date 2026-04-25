@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #1 • Self-Hosting, why?'
 date: 2021-02-17
 description: 'The Self-Hosting Blog Ed here at The Self-Hosting Blog. I hope you''re having a great week! Thanks so much for choosing to subscribe to our mailing list. I really hope we can provide you with some usef'
 cover:
   image: '/images/2021/03/Newsletter-Header-4.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

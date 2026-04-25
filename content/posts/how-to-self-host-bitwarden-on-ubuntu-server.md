@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Completely Self-Hosting Bitwarden Password Manager (Updated 2022)'
 date: 2020-08-30
 description: 'This article will cover setting up your own self-hosted Bitwarden instance with Docker and configuring ngnix to allow for public exposure for cross device access to your vault.'
 cover:
   image: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #10 • IP Masquerading and server notifications'
 date: 2021-04-19
 description: 'The top post from Inlets raises an interesting way of having a public static IP address without needing to pay your ISP for the pleasure. This can also be achieved for free using IP Masquerading, whic'
 cover:
   image: '/images/2021/04/Newsletter-Header-1.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

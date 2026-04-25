@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Self hosting Stringer, the anti-social RSS reader'
 date: 2021-07-03
 description: 'if you''re like me, I just want to consume my RSS. I don''t want to see any adverts, any fancy recommendations or have a subscription fee. I also want an RSS reader that is pleasant to use. I have dabbl'
 cover:
   image: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fG5ld3N8ZW58MHx8fHwxNjI1MzM0ODk2&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

@@ -1,8 +1,166 @@
-<!doctype html><html lang=en dir=auto data-theme=light><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Archiving ProtonMail Emails on a headless Ubuntu instance | The Self-Hosting Blog</title>
-<meta name=keywords content="Guides"><meta name=description content="I wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving."><meta name=author content="Ed"><link rel=canonical href=https://theselfhostingblog.com/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/><link crossorigin=anonymous href=/assets/css/stylesheet.069d6877cbbe02a9b237ca50e62dbc4a0c24163af241e9c18f3e5cc1ec57ec67.css integrity="sha256-Bp1od8u+AqmyN8pQ5i28SgwkFjryQenBjz5cwexX7Gc=" rel="preload stylesheet" as=style><link rel=icon href=https://theselfhostingblog.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://theselfhostingblog.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://theselfhostingblog.com/favicon-32x32.png><link rel=apple-touch-icon href=https://theselfhostingblog.com/apple-touch-icon.png><link rel=mask-icon href=https://theselfhostingblog.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://theselfhostingblog.com/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"&&(document.querySelector("html").dataset.theme="dark")</script><meta property="og:url" content="https://theselfhostingblog.com/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/"><meta property="og:site_name" content="The Self-Hosting Blog"><meta property="og:title" content="Archiving ProtonMail Emails on a headless Ubuntu instance"><meta property="og:description" content="I wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-11-16T00:00:00+00:00"><meta property="article:modified_time" content="2020-11-16T00:00:00+00:00"><meta property="article:tag" content="Guides"><meta property="og:image" content="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ"><meta name=twitter:title content="Archiving ProtonMail Emails on a headless Ubuntu instance"><meta name=twitter:description content="I wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://theselfhostingblog.com/posts/"},{"@type":"ListItem","position":2,"name":"Archiving ProtonMail Emails on a headless Ubuntu instance","item":"https://theselfhostingblog.com/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Archiving ProtonMail Emails on a headless Ubuntu instance","name":"Archiving ProtonMail Emails on a headless Ubuntu instance","description":"I wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.","keywords":["Guides"],"articleBody":"IntroductionI wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.\nSecure email: ProtonMail is free encrypted email.ProtonMail is the world’s largest secure email service, developed by CERN and MIT scientists. We are open source and protected by Swiss privacy lawProtonMailI'm going to talk through my steps. There's plenty of tutorials out there for email services such as; Gmail, Hotmail etc. But not much around ProtonMail, especially using a headless instance.\nProtonMail bridgeProtonMail Bridge is an open-source piece of software built by the Proton Team to create a dummy IMAP server locally, with a sole purpose of decrypting your emails locally to enable you to use a desktop email client such as ThunderBird. Configure ProtonMail secure email with your favorite IMAP/SMTP email client by using the ProtonMail Bridge application. IMAP instructions here.Configure ProtonMail secure email with your favorite IMAP/SMTP email client by using the ProtonMail Bridge application. IMAP instructions here.ProtonMailProtonMail Bridge is a paid feature though, with a minimum requirement of the ProtonMail Plus plan ($5/month). ProtonMail Bridge is not available on the ProtonMail Free plan.\nOverviewWe're going to set up a Cron job on a headless Ubuntu instance to periodically pull down all our emails. This instance will be running ProtonMail Bridge and a tool named Offlineimap, which will be used to store all your emails in a plaintext, searchable format. OfflineIMAP community’s websiteOfflineIMAP community’s website.Getting StartedStep 1: Setting up your Linux serverYou'll need to either have an existing server instance or create one. I use a Proxmox instance running on a server in my loft. You could also use something like Digital Ocean to run your local archive. Using the following link will give you $100 worth of credits for 60 days to play around with, just sign up using this link.\nYou could also use a cheap Raspberry PI to set up your own Linux server.\nOnce you have the server set up, or have logged in. You'll need to do some updates and run some prerequisite installs.\nsudo apt-get update sudo apt-get upgradeStep 1: gpg and passTo use ProtonMail Bridge, you need to first set up the dependencies. These dependencies are pass (A password management system), which has a dependency of gpg (A key management system).\nInstalling GPGGPG should be installed on your system as part of the update and upgrade commands that you initially ran after provisioning your server. If it's not, you can install GPG by running the following command.\nsudo apt-get install gpgOnce GPG is installed, you need to generate a GPG key.\ngpg --gen-keyThis will run you through a wizard of adding your full name and email address. Also requiring you to create a passphrase for your gpg key. Add a password to satisfy the wizard, but we'll have to remove this later.\nUnfortunately, ProtonMail Bridge will not work with a password protected GPG key in headless mode. This is a serious security risk, so make up your own opinion on this, do some research on what implications this has.\nOnce GPG has finished, you'll have a public key output. It'll look something like the following\n7BDD29402175BC627671356BE8AC4A1C3C5J6357We now need to remove the passphrase associated with this key.\nRun the following\ngpg --edit-key 7BDD29402175BC627671356BE8AC4A1C3C5J6357Once you have executed that command, you'll be in the context of gpg\nRun then next command\npasswdYou'll now need to enter the passphrase you created earlier, which will unlock the GPG key.\nThere will now be another console prompt to enter a new passphrase.\nLeave this blank.\nYou'll be asked to confirm that you want a blank passphrase, it'll warn you about the security implications.\nHit 'Y' or Yes to confirm this implication.\nFinally, quit the GPG context by typing q and hitting Enter.\nInstalling PassNow it's time to install Pass, which is a ProtonMail Bridge dependency.\nsudo apt-get install passWe'll then need to initialise a new pass instance with your previously generated gpg key id.\npass init 7BDD29402175BC627671356BE8AC4A1C3C5J6357That's, all the setup required for initialising pass.\nStep 2: Installing ProtonMail BridgeNow it's time to install ProtonMail Bridge.\nRun the following command to install the latest version of ProtonMail Bridge at time of writing this post.\nwget https://protonmail.com/download/beta/protonmail-bridge_1.5.0-1_amd64.debThen install\ndpkg -i protonmail-bridge_1.5.0-1_amd64.debThere may be some more missing dependencies when installing. To fix this, run the following\nsudo apt --fix-broken installStep 3: Initialising ProtonMail BridgeWe now need to log in to ProtonMail Bridge, to do this, run the following command\nprotonmail-bridge --cliProtonMail Bridge will start up and ask you to log in with an email and a password.\nThis will be your standard ProtonMail username and password.\nStep 4: Getting your ProtonMail IMAP Username and PasswordWhilst in the context of the ProtonMail Bridge session, run the following command.\ninfoYou'll see an output like the following.\nWelcome to ProtonMail Bridge interactive shell ___....___ ^^ __..-:'':__:..:__:'':-..__ _.-:__:.-:'': : : :'':-.:__:-._ .':.-: : : : : : : : : :._:'. _ :.': : : : : : : : : : : :'.: _ [ ]: : : : : : : : : : : : : :[ ] [ ]: : : : : : : : : : : : : :[ ] :::::::::[ ]:__:__:__:__:__:__:__:__:__:__:__:__:__:[ ]::::::::::: !!!!!!!!![ ]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![ ]!!!!!!!!!!! ^^^^^^^^^[ ]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[ ]^^^^^^^^^^^ [ ] [ ] [ ] [ ] jgs [ ] [ ] ~~^_~^~/ \\~^-~^~ _~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/ \\~^ ~~_ ^ \u003e\u003e\u003e info Configuration for {your email} IMAP Settings Address: 127.0.0.1 IMAP port: 1143 Username: {your email} Password: {your password} Security: STARTTLS SMTP Settings Address: 127.0.0.1 IMAP port: 1025 Username: {your email} Password: {your password} Security: STARTTLSTake a note of the values {your email} and {your password}. You’ll need these later.\nStep 5: Setting up OfflineimapI’m going to be using an open-source tool I found on Github. Written by peterrus.\npeterrus/protonmail-export-linuxSimple example on how you can incrementally export (backup) all your email from Protonmail’s servers to a local Maildir archive. - peterrus/protonmail-export-linuxGitHubpeterrusRun the following command to pull down the repo from Github.\ngit clone https://github.com/peterrus/protonmail-export-linux.gitThe cd into the cloned repo\ncd protonmail-export-linuxNext, you need to install offlineimap\nsudo apt-get install offlineimapOnce installed, in the protonmail-export-linux directory, there will be a offlineimaprc file. Open this with your favorite text editor. I’ll be using vim in this example.\nvim offlineimparcYou’ll see a file open that looks something like the following\n# Feel free to modify this file to your needs\nSee https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf for a full reference [general] accounts = Protonmail metadata = ./offlineimap-metadata\n[Account Protonmail] localrepository = ProtonmailLocal remoterepository = ProtonmailRemote\nFeel free to change this, or disable it by commenting it out postsynchook = notify-send ‘Protonmail export done’\n[Repository ProtonmailLocal] type = Maildir localfolders = ./protonmail-export\nIf you (accidentally) delete mail locally, it won’t get synced to Protonmail sync_deletes = no\n[Repository ProtonmailRemote] type = IMAP\nChange this to the value provided in the Protonmail bridge remoteuser = {your email} remotepass = {your password} remotehost = localhost remoteport = 1143 ssl = no starttls = no\nIf you delete mail on Protonmail, this deletion also get’s synced to the archive expunge = yes\nDon’t try to sync local changes to Protonmail, we just want a backup readonly = TrueLeave everything how it is, apart from the section where I have specified, {your email} and {your password}. These will need to be replaced with your ProtonMail Bridge email and password that I got you to take note of earlier.\nSave your changes and exit your text editor.\nStep 6: Setting up screenI use screen to run services in the background. Both protonmail-bridge and offlineimap need to run simultaneously.\nsudo apt-get install screenStep 7: Creating a startup scriptI made it easy for myself and created a startup script to execute both protonmail-bridge and offlineimap\nHere’s my script, simply create a new file named start-sync.sh in your home directory. Giving it execute permissions by running\nsudo chmod +x start-sync.shThe start-sync.sh file contents should look like this. #! /bin/bash echo “killing existing screen sessions” pkill screen echo “Starting bridge” screen -d -m protonmail-bridge –cli echo “Starting sync” sleep 10 screen -d -m offlineimap -c /home/{your user}/protonmail-export-linux/offlineimaprcChange the location of your offlineimaprc file in that shell script.\nStep 8: Starting OfflineimapNow it’s time to execute your start-sync.sh\n./start-sync.shNow, both of your services should have started up. To see them, run the following command\nscreen -rYou’ll see an output like the following\ned@mail:# screen -r There are several suitable screens on: 6415..mail (12/05/20 18:06:26) (Detached) 6308..mail (12/05/20 18:06:16) (Detached) Type “screen [-d] -r [pid.]tty.host” to resume one of them. ed@mail:#Then run\nscreen -r 6415 // 6415 being the id of the top process on the screen -r outputYou should see an output of a successful authentication with ProtonMail Bridge, and a list of emails currently being downloaded.\nCopy message UID 2081 (23/3445) ProtonmailRemote:All Mail -\u003e ProtonmailLocal Folder INBOX [acc: Protonmail]: etc…Detach from this screen by hitting Ctrl + a and Ctrl + d.\nStep 9: Where are my emails?Whilst your emails are downloading, they will be saved to ~/protonmail-export. You should see a list of your email folders in this directory, under the cur subdirectory.\nStep 10: Setting up a cron job to pull new emailsNow it’s time to set this job up to run each day, or each hour, whatever you’d like to pick.\nRun the following\nsudo crontab -eAt the very bottom of your crontab file, paste in the following command.\n0 0 * * * /home/{your user}/start-sync.shI use a tool called crontab.guru to assist with picking a schedule to run my command.\nMy command will run at midnight each day.\nThat’s allAnd hopefully, everything should be up and running successfully. Let me know if you receive any issues in the comments, I’ll be happy to help you out.\nYou could now sync all your emails to Dropbox, or something like Syncthing, which I have recently written about here.\n","wordCount":"1643","inLanguage":"en","image":"https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1\u0026q=80\u0026fm=jpg\u0026crop=entropy\u0026cs=tinysrgb\u0026w=2000\u0026fit=max\u0026ixid=eyJhcHBfaWQiOjExNzczfQ","datePublished":"2020-11-16T00:00:00Z","dateModified":"2020-11-16T00:00:00Z","author":{"@type":"Person","name":"Ed"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://theselfhostingblog.com/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/"},"publisher":{"@type":"Organization","name":"The Self-Hosting Blog","logo":{"@type":"ImageObject","url":"https://theselfhostingblog.com/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://theselfhostingblog.com/ accesskey=h title="The Self-Hosting Blog (Alt + H)">The Self-Hosting Blog</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://theselfhostingblog.com/ title=Home><span>Home</span></a></li><li><a href=https://theselfhostingblog.com/tags/guides/ title=Guides><span>Guides</span></a></li><li><a href=https://theselfhostingblog.com/tags/ramblings/ title=Ramblings><span>Ramblings</span></a></li><li><a href=https://theselfhostingblog.com/about/ title=About><span>About</span></a></li><li><a href=https://theselfhostingblog.com/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://theselfhostingblog.com/index.xml title=RSS><span>RSS</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=https://theselfhostingblog.com/>Home</a>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
-<a href=https://theselfhostingblog.com/posts/>Posts</a></nav><h1 class="post-title entry-hint-parent">Archiving ProtonMail Emails on a headless Ubuntu instance</h1><div class=post-description>I wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.</div><div class=post-meta><span title='2020-11-16 00:00:00 +0000 UTC'>November 16, 2020</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>Ed</span></div></header><figure class=entry-cover><img loading=eager src="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt></figure><details class=toc><summary accesskey=c title="(Alt + C)"><span class=title>Table of Contents</span></summary><div class=inner><ul><ul><li><a href=#introduction aria-label=Introduction>Introduction</a></li><li><a href=#protonmail-bridge aria-label="ProtonMail bridge">ProtonMail bridge</a></li><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#getting-started aria-label="Getting Started">Getting Started</a><ul><li><a href=#step-1-setting-up-your-linux-server aria-label="Step 1: Setting up your Linux server">Step 1: Setting up your Linux server</a></li><li><a href=#step-1-gpg-and-pass aria-label="Step 1: gpg and pass">Step 1: gpg and pass</a><ul><li><a href=#installing-gpg aria-label="Installing GPG">Installing GPG</a></li><li><a href=#installing-pass aria-label="Installing Pass">Installing Pass</a></li></ul></li><li><a href=#step-2-installing-protonmail-bridge aria-label="Step 2: Installing ProtonMail Bridge">Step 2: Installing ProtonMail Bridge</a></li><li><a href=#step-3-initialising-protonmail-bridge aria-label="Step 3: Initialising ProtonMail Bridge">Step 3: Initialising ProtonMail Bridge</a></li><li><a href=#step-4-getting-your-protonmail-imap-username-and-password aria-label="Step 4: Getting your ProtonMail IMAP Username and Password">Step 4: Getting your ProtonMail IMAP Username and Password</a></li><li><a href=#step-5-setting-up-offlineimap aria-label="Step 5: Setting up Offlineimap">Step 5: Setting up Offlineimap</a></li></ul></li></ul><li><a href=#see--for-a-full-reference aria-label="See https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf for a full reference">See https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf for a full reference</a></li><li><a href=#feel-free-to-change-this-or-disable-it-by-commenting-it-out aria-label="Feel free to change this, or disable it by commenting it out">Feel free to change this, or disable it by commenting it out</a></li><li><a href=#if-you-accidentally-delete-mail-locally-it-wont-get-synced-to-protonmail aria-label="If you (accidentally) delete mail locally, it won&rsquo;t get synced to Protonmail">If you (accidentally) delete mail locally, it won&rsquo;t get synced to Protonmail</a></li><li><a href=#change-this-to-the-value-provided-in-the-protonmail-bridge aria-label="Change this to the value provided in the Protonmail bridge">Change this to the value provided in the Protonmail bridge</a></li><li><a href=#if-you-delete-mail-on-protonmail-this-deletion-also-gets-synced-to-the-archive aria-label="If you delete mail on Protonmail, this deletion also get&rsquo;s synced to the archive">If you delete mail on Protonmail, this deletion also get&rsquo;s synced to the archive</a></li><li><a href=#dont-try-to-sync-local-changes-to-protonmail-we-just-want-a-backup aria-label="Don&rsquo;t try to sync local changes to Protonmail, we just want a backup">Don&rsquo;t try to sync local changes to Protonmail, we just want a backup</a><ul><ul><li><a href=#step-6-setting-up-screen aria-label="Step 6: Setting up screen">Step 6: Setting up screen</a></li><li><a href=#step-7-creating-a-startup-script aria-label="Step 7: Creating a startup script">Step 7: Creating a startup script</a></li><li><a href=#step-8-starting-offlineimap aria-label="Step 8: Starting Offlineimap">Step 8: Starting Offlineimap</a></li><li><a href=#step-9-where-are-my-emails aria-label="Step 9: Where are my emails?">Step 9: Where are my emails?</a></li><li><a href=#step-10-setting-up-a-cron-job-to-pull-new-emails aria-label="Step 10: Setting up a cron job to pull new emails">Step 10: Setting up a cron job to pull new emails</a></li><li><a href=#that-s-all aria-label="That&rsquo;s all">That&rsquo;s all</a></li></ul></ul></li></ul></div></details><div class="post-content md-content"><h2 id=introduction>Introduction</h2><p>I wanted to be able to store all of my <a href=https://protonmail.com/>ProtonMail</a> emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.</p><figure class="kg-card kg-bookmark-card"><a class=kg-bookmark-container href=https://protonmail.com/><div class=kg-bookmark-content><div class=kg-bookmark-title>Secure email: ProtonMail is free encrypted email.</div><div class=kg-bookmark-description>ProtonMail is the world’s largest secure email service, developed by CERN and MIT scientists. We are open source and protected by Swiss privacy law</div><div class=kg-bookmark-metadata><img class=kg-bookmark-icon src=https://protonmail.com/apple-touch-icon.png><span class=kg-bookmark-author>ProtonMail</span></div></div><div class=kg-bookmark-thumbnail><img src=https://protonmail.com/images/facebook_logo.jpg></div></a></figure><p>I'm going to talk through my steps. There's plenty of tutorials out there for email services such as; Gmail, Hotmail etc. But not much around ProtonMail, especially using a headless instance.</p><h2 id=protonmail-bridge>ProtonMail bridge</h2><p><a href=https://protonmail.com/bridge/>ProtonMail Bridge</a> is an open-source piece of software built by the Proton Team to create a dummy IMAP server locally, with a sole purpose of decrypting your emails locally to enable you to use a desktop email client such as <a href=https://www.thunderbird.net/en-US/>ThunderBird</a>.</p><figure class="kg-card kg-bookmark-card"><a class=kg-bookmark-container href=https://protonmail.com/bridge/><div class=kg-bookmark-content><div class=kg-bookmark-title>Configure ProtonMail secure email with your favorite IMAP/SMTP email client by using the ProtonMail Bridge application. IMAP instructions here.</div><div class=kg-bookmark-description>Configure ProtonMail secure email with your favorite IMAP/SMTP email client by using the ProtonMail Bridge application. IMAP instructions here.</div><div class=kg-bookmark-metadata><img class=kg-bookmark-icon src=https://protonmail.com/images/favicon.ico><span class=kg-bookmark-author>ProtonMail</span></div></div><div class=kg-bookmark-thumbnail><img src=https://protonmail.com/images/facebook_logo.jpg></div></a></figure><p>ProtonMail Bridge is a paid feature though, with a minimum requirement of the <a href=https://protonmail.com/pricing>ProtonMail Plus</a> plan ($5/month). ProtonMail Bridge is not available on the ProtonMail Free plan.</p><h2 id=overview>Overview</h2><p>We're going to set up  a Cron job on a headless Ubuntu instance to periodically pull down all our emails. This instance will be running ProtonMail Bridge and a tool named <a href=http://www.offlineimap.org/>Offlineimap</a>, which will be used to store all your emails in a plaintext, searchable format.</p><figure class="kg-card kg-bookmark-card"><a class=kg-bookmark-container href=http://www.offlineimap.org/><div class=kg-bookmark-content><div class=kg-bookmark-title>OfflineIMAP community’s website</div><div class=kg-bookmark-description>OfflineIMAP community’s website.</div><div class=kg-bookmark-metadata></div></div><div class=kg-bookmark-thumbnail><img src=http://www.offlineimap.org/assets/logo/offlineimap-scalable.svg></div></a></figure><h2 id=getting-started>Getting Started</h2><h3 id=step-1-setting-up-your-linux-server>Step 1: Setting up your Linux server<a hidden class=anchor aria-hidden=true href=#introduction>#</a></h3><p>You'll need to either have an existing server instance or create one. I use a Proxmox instance running on a server in my loft. You could also use something like <a href=https://www.digitalocean.com/>Digital Ocean</a> to run your local archive. Using the following link will give you $100 worth of credits for 60 days to play around with, just sign up using <a href=https://m.do.co/c/d2a3afe52625>this link</a>.</p><p>You could also use a cheap <a href=https://amzn.to/3cWTlno>Raspberry PI</a> to set up your own Linux server.</p><p>Once you have the server set up, or have logged in. You'll need to do some updates and run some prerequisite installs.</p><pre><code class=language-bash>sudo apt-get update
-sudo apt-get upgrade</code></pre><h3 id=step-1-gpg-and-pass>Step 1: gpg and pass</h3><p>To use ProtonMail Bridge, you need to first set up the dependencies. These dependencies are <code>pass</code> (A password management system), which has a dependency of <code>gpg</code> (A key management system).</p><h4 id=installing-gpg>Installing GPG</h4><p>GPG should be installed on your system as part of the <code>update and upgrade</code> commands that you initially ran after provisioning your server. If it's not, you can install GPG by running the following command.</p><pre><code class=language-bash>sudo apt-get install gpg</code></pre><p>Once GPG is installed, you need to generate a GPG key.</p><pre><code class=language-bash>gpg --gen-key</code></pre><p>This will run you through a wizard of adding your full name and email address. Also requiring you to create a passphrase for your gpg key. Add a password to satisfy the wizard, but we'll have to remove this later.</p><p>Unfortunately, ProtonMail Bridge will not work with a password protected GPG key in headless mode. This is a serious security risk, so make up your own opinion on this, do some research on what implications this has.</p><p>Once GPG has finished, you'll have a public key output. It'll look something like the following</p><pre><code>7BDD29402175BC627671356BE8AC4A1C3C5J6357</code></pre><p>We now need to remove the passphrase associated with this key.</p><p>Run the following</p><pre><code class=language-bash>gpg --edit-key 7BDD29402175BC627671356BE8AC4A1C3C5J6357</code></pre><p>Once you have executed that command, you'll be in the context of gpg</p><p>Run then next command</p><pre><code class=language-bash>passwd</code></pre><p>You'll now need to enter the passphrase you created earlier, which will unlock the GPG key.</p><p>There will now be another console prompt to enter a new passphrase.</p><p>Leave this blank.</p><p>You'll be asked to confirm that you want a blank passphrase, it'll warn you about the security implications.</p><p>Hit 'Y' or Yes to confirm this implication.</p><p>Finally, quit the GPG context by typing <code>q</code> and hitting Enter.</p><h4 id=installing-pass>Installing Pass</h4><p>Now it's time to install Pass, which is a ProtonMail Bridge dependency.</p><pre><code class=language-bash>sudo apt-get install pass</code></pre><p>We'll then need to initialise a new <code>pass</code> instance with your previously generated gpg key id.</p><pre><code class=language-bash>pass init 7BDD29402175BC627671356BE8AC4A1C3C5J6357</code></pre><p>That's, all the setup required for initialising <code>pass</code>.</p><h3 id=step-2-installing-protonmail-bridge>Step 2: Installing ProtonMail Bridge</h3><p>Now it's time to install ProtonMail Bridge.</p><p>Run the following command to install the latest version of ProtonMail Bridge at time of writing this post.</p><pre><code class=language-bash>wget https://protonmail.com/download/beta/protonmail-bridge_1.5.0-1_amd64.deb</code></pre><p>Then install</p><pre><code class=language-bash>dpkg -i protonmail-bridge_1.5.0-1_amd64.deb</code></pre><p>There may be some more missing dependencies when installing. To fix this, run the following</p><pre><code class=language-bash>sudo apt --fix-broken install</code></pre><h3 id=step-3-initialising-protonmail-bridge>Step 3: Initialising ProtonMail Bridge</h3><p>We now need to log in to ProtonMail Bridge, to do this, run the following command</p><pre><code class=language-bash>protonmail-bridge --cli</code></pre><p>ProtonMail Bridge will start up and ask you to log in with an email and a password.</p><p>This will be your standard ProtonMail username and password.</p><h3 id=step-4-getting-your-protonmail-imap-username-and-password>Step 4: Getting your ProtonMail IMAP Username and Password<a hidden class=anchor aria-hidden=true href=#step-1-gpg-and-pass>#</a></h3><p>Whilst in the context of the ProtonMail Bridge session, run the following command.</p><pre><code class=language-bash>info</code></pre><p>You'll see an output like the following.</p><pre><code>            Welcome to ProtonMail Bridge interactive shell
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Archiving ProtonMail Emails on a headless Ubuntu instance | The Self-Hosting Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="I wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.">
+<meta name="author" content="ed">
+<link rel="canonical" href="http://192.168.1.158:1313/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.28834518a10a1d09fe622eb42326e916004b51d4064484a3b9eca2a509569d20.css" integrity="sha256-KINFGKEKHQn&#43;Yi60IybpFgBLUdQGRISjueyipQlWnSA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://192.168.1.158:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.1.158:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.1.158:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://192.168.1.158:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://192.168.1.158:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://192.168.1.158:1313/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://192.168.1.158:1313/" accesskey="h" title="The Self-Hosting Blog (Alt + H)">The Self-Hosting Blog</a>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://192.168.1.158:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/tag/guides/" title="Guides">
+                    <span>Guides</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/tag/ramblings/" title="Ramblings">
+                    <span>Ramblings</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/about-us/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    <a href='http://192.168.1.158:1313/'>Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="http://192.168.1.158:1313/posts/">Posts</a></nav>
+    <h1 class="post-title entry-hint-parent">
+      Archiving ProtonMail Emails on a headless Ubuntu instance
+    </h1>
+    <div class="post-description">
+      I wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.
+    </div>
+    <div class="post-meta"><span title='2020-11-16 00:00:00 +0000 UTC'>November 16, 2020</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>ed</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt="">
+        </a>
+        
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#protonmail-bridge" aria-label="ProtonMail bridge">ProtonMail bridge</a></li>
+            <li>
+                <a href="#overview" aria-label="Overview">Overview</a></li>
+            <li>
+                <a href="#getting-started" aria-label="Getting Started">Getting Started</a><ul>
+                    
+            <li>
+                <a href="#step-1-setting-up-your-linux-server" aria-label="Step 1: Setting up your Linux server">Step 1: Setting up your Linux server</a></li>
+            <li>
+                <a href="#step-1-gpg-and-pass" aria-label="Step 1: gpg and pass">Step 1: gpg and pass</a><ul>
+                    
+            <li>
+                <a href="#installing-gpg" aria-label="Installing GPG">Installing GPG</a></li>
+            <li>
+                <a href="#installing-pass" aria-label="Installing Pass">Installing Pass</a></li></ul>
+            </li>
+            <li>
+                <a href="#step-2-installing-protonmail-bridge" aria-label="Step 2: Installing ProtonMail Bridge">Step 2: Installing ProtonMail Bridge</a></li>
+            <li>
+                <a href="#step-3-initialising-protonmail-bridge" aria-label="Step 3: Initialising ProtonMail Bridge">Step 3: Initialising ProtonMail Bridge</a></li>
+            <li>
+                <a href="#step-4-getting-your-protonmail-imap-username-and-password" aria-label="Step 4: Getting your ProtonMail IMAP Username and Password">Step 4: Getting your ProtonMail IMAP Username and Password</a></li>
+            <li>
+                <a href="#step-5-setting-up-offlineimap" aria-label="Step 5: Setting up Offlineimap">Step 5: Setting up Offlineimap</a></li></ul>
+            </li></ul>
+                
+            <li>
+                <a href="#see--for-a-full-reference" aria-label="See https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf for a full reference">See https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf for a full reference</a></li>
+            <li>
+                <a href="#feel-free-to-change-this-or-disable-it-by-commenting-it-out" aria-label="Feel free to change this, or disable it by commenting it out">Feel free to change this, or disable it by commenting it out</a></li>
+            <li>
+                <a href="#if-you-accidentally-delete-mail-locally-it-wont-get-synced-to-protonmail" aria-label="If you (accidentally) delete mail locally, it won&rsquo;t get synced to Protonmail">If you (accidentally) delete mail locally, it won&rsquo;t get synced to Protonmail</a></li>
+            <li>
+                <a href="#change-this-to-the-value-provided-in-the-protonmail-bridge" aria-label="Change this to the value provided in the Protonmail bridge">Change this to the value provided in the Protonmail bridge</a></li>
+            <li>
+                <a href="#if-you-delete-mail-on-protonmail-this-deletion-also-gets-synced-to-the-archive" aria-label="If you delete mail on Protonmail, this deletion also get&rsquo;s synced to the archive">If you delete mail on Protonmail, this deletion also get&rsquo;s synced to the archive</a></li>
+            <li>
+                <a href="#dont-try-to-sync-local-changes-to-protonmail-we-just-want-a-backup" aria-label="Don&rsquo;t try to sync local changes to Protonmail, we just want a backup">Don&rsquo;t try to sync local changes to Protonmail, we just want a backup</a><ul>
+                    <ul>
+                    
+            <li>
+                <a href="#step-6-setting-up-screen" aria-label="Step 6: Setting up screen">Step 6: Setting up screen</a></li>
+            <li>
+                <a href="#step-7-creating-a-startup-script" aria-label="Step 7: Creating a startup script">Step 7: Creating a startup script</a></li>
+            <li>
+                <a href="#step-8-starting-offlineimap" aria-label="Step 8: Starting Offlineimap">Step 8: Starting Offlineimap</a></li>
+            <li>
+                <a href="#step-9-where-are-my-emails" aria-label="Step 9: Where are my emails?">Step 9: Where are my emails?</a></li>
+            <li>
+                <a href="#step-10-setting-up-a-cron-job-to-pull-new-emails" aria-label="Step 10: Setting up a cron job to pull new emails">Step 10: Setting up a cron job to pull new emails</a></li>
+            <li>
+                <a href="#that-s-all" aria-label="That&rsquo;s all">That&rsquo;s all</a>
+            </li>
+        </ul>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h2 id="introduction">Introduction</h2><p>I wanted to be able to store all of my <a href="https://protonmail.com/">ProtonMail</a> emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://protonmail.com/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Secure email: ProtonMail is free encrypted email.</div><div class="kg-bookmark-description">ProtonMail is the world’s largest secure email service, developed by CERN and MIT scientists. We are open source and protected by Swiss privacy law</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://protonmail.com/apple-touch-icon.png"><span class="kg-bookmark-author">ProtonMail</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://protonmail.com/images/facebook_logo.jpg"></div></a></figure><p>I'm going to talk through my steps. There's plenty of tutorials out there for email services such as; Gmail, Hotmail etc. But not much around ProtonMail, especially using a headless instance.</p><h2 id="protonmail-bridge">ProtonMail bridge</h2><p><a href="https://protonmail.com/bridge/">ProtonMail Bridge</a> is an open-source piece of software built by the Proton Team to create a dummy IMAP server locally, with a sole purpose of decrypting your emails locally to enable you to use a desktop email client such as <a href="https://www.thunderbird.net/en-US/">ThunderBird</a>. </p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://protonmail.com/bridge/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Configure ProtonMail secure email with your favorite IMAP/SMTP email client by using the ProtonMail Bridge application. IMAP instructions here.</div><div class="kg-bookmark-description">Configure ProtonMail secure email with your favorite IMAP/SMTP email client by using the ProtonMail Bridge application. IMAP instructions here.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://protonmail.com/images/favicon.ico"><span class="kg-bookmark-author">ProtonMail</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://protonmail.com/images/facebook_logo.jpg"></div></a></figure><p>ProtonMail Bridge is a paid feature though, with a minimum requirement of the <a href="https://protonmail.com/pricing">ProtonMail Plus</a> plan ($5/month). ProtonMail Bridge is not available on the ProtonMail Free plan.</p><h2 id="overview">Overview</h2><p>We're going to set up  a Cron job on a headless Ubuntu instance to periodically pull down all our emails. This instance will be running ProtonMail Bridge and a tool named <a href="http://www.offlineimap.org/">Offlineimap</a>, which will be used to store all your emails in a plaintext, searchable format. </p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="http://www.offlineimap.org/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">OfflineIMAP community’s website</div><div class="kg-bookmark-description">OfflineIMAP community’s website.</div><div class="kg-bookmark-metadata"></div></div><div class="kg-bookmark-thumbnail"><img src="http://www.offlineimap.org/assets/logo/offlineimap-scalable.svg"></div></a></figure><h2 id="getting-started">Getting Started</h2><h3 id="step-1-setting-up-your-linux-server">Step 1: Setting up your Linux server<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h3><p>You'll need to either have an existing server instance or create one. I use a Proxmox instance running on a server in my loft. You could also use something like <a href="https://www.digitalocean.com/">Digital Ocean</a> to run your local archive. Using the following link will give you $100 worth of credits for 60 days to play around with, just sign up using <a href="https://m.do.co/c/d2a3afe52625">this link</a>.</p><p>You could also use a cheap <a href="https://amzn.to/3cWTlno">Raspberry PI</a> to set up your own Linux server.</p><p>Once you have the server set up, or have logged in. You'll need to do some updates and run some prerequisite installs.</p><pre><code class="language-bash">sudo apt-get update
+sudo apt-get upgrade</code></pre><h3 id="step-1-gpg-and-pass">Step 1: gpg and pass</h3><p>To use ProtonMail Bridge, you need to first set up the dependencies. These dependencies are <code>pass</code> (A password management system), which has a dependency of <code>gpg</code> (A key management system).</p><h4 id="installing-gpg">Installing GPG</h4><p>GPG should be installed on your system as part of the <code>update and upgrade</code> commands that you initially ran after provisioning your server. If it's not, you can install GPG by running the following command.</p><pre><code class="language-bash">sudo apt-get install gpg</code></pre><p>Once GPG is installed, you need to generate a GPG key.</p><pre><code class="language-bash">gpg --gen-key</code></pre><p>This will run you through a wizard of adding your full name and email address. Also requiring you to create a passphrase for your gpg key. Add a password to satisfy the wizard, but we'll have to remove this later.</p><p>Unfortunately, ProtonMail Bridge will not work with a password protected GPG key in headless mode. This is a serious security risk, so make up your own opinion on this, do some research on what implications this has.</p><p>Once GPG has finished, you'll have a public key output. It'll look something like the following</p><pre><code>7BDD29402175BC627671356BE8AC4A1C3C5J6357</code></pre><p>We now need to remove the passphrase associated with this key.</p><p>Run the following</p><pre><code class="language-bash">gpg --edit-key 7BDD29402175BC627671356BE8AC4A1C3C5J6357</code></pre><p>Once you have executed that command, you'll be in the context of gpg</p><p>Run then next command</p><pre><code class="language-bash">passwd</code></pre><p>You'll now need to enter the passphrase you created earlier, which will unlock the GPG key.</p><p>There will now be another console prompt to enter a new passphrase.</p><p>Leave this blank.</p><p>You'll be asked to confirm that you want a blank passphrase, it'll warn you about the security implications.</p><p>Hit 'Y' or Yes to confirm this implication.</p><p>Finally, quit the GPG context by typing <code>q</code> and hitting Enter.</p><h4 id="installing-pass">Installing Pass</h4><p>Now it's time to install Pass, which is a ProtonMail Bridge dependency.</p><pre><code class="language-bash">sudo apt-get install pass</code></pre><p>We'll then need to initialise a new <code>pass</code> instance with your previously generated gpg key id.</p><pre><code class="language-bash">pass init 7BDD29402175BC627671356BE8AC4A1C3C5J6357</code></pre><p>That's, all the setup required for initialising <code>pass</code>.</p><h3 id="step-2-installing-protonmail-bridge">Step 2: Installing ProtonMail Bridge</h3><p>Now it's time to install ProtonMail Bridge.</p><p>Run the following command to install the latest version of ProtonMail Bridge at time of writing this post.</p><pre><code class="language-bash">wget https://protonmail.com/download/beta/protonmail-bridge_1.5.0-1_amd64.deb</code></pre><p>Then install</p><pre><code class="language-bash">dpkg -i protonmail-bridge_1.5.0-1_amd64.deb</code></pre><p>There may be some more missing dependencies when installing. To fix this, run the following</p><pre><code class="language-bash">sudo apt --fix-broken install</code></pre><h3 id="step-3-initialising-protonmail-bridge">Step 3: Initialising ProtonMail Bridge</h3><p>We now need to log in to ProtonMail Bridge, to do this, run the following command</p><pre><code class="language-bash">protonmail-bridge --cli</code></pre><p>ProtonMail Bridge will start up and ask you to log in with an email and a password.</p><p>This will be your standard ProtonMail username and password.</p><h3 id="step-4-getting-your-protonmail-imap-username-and-password">Step 4: Getting your ProtonMail IMAP Username and Password<a hidden class="anchor" aria-hidden="true" href="#step-1-gpg-and-pass">#</a></h3><p>Whilst in the context of the ProtonMail Bridge session, run the following command.</p><pre><code class="language-bash">info</code></pre><p>You'll see an output like the following.</p><pre><code>            Welcome to ProtonMail Bridge interactive shell
                               ___....___
     ^^                __..-:'':__:..:__:'':-..__
                   _.-:__:.-:'':  :  :  :'':-.:__:-._
@@ -30,52 +188,180 @@ Address:   127.0.0.1
 IMAP port: 1025
 Username:  {your email}
 Password:  {your password}
-Security:  STARTTLS</code></pre><p>Take a note of the values <code>{your email}</code> and <code>{your password}</code>. You&rsquo;ll need these later.</p><h3 id=step-5-setting-up-offlineimap>Step 5: Setting up Offlineimap<a hidden class=anchor aria-hidden=true href=#step-5-setting-up-offlineimap>#</a></h3><p>I&rsquo;m going to be using an open-source tool I found on Github. Written by <code><a href=https://github.com/peterrus/protonmail-export-linux>peterrus</a></code>.</p><figure class="kg-card kg-bookmark-card"><a class=kg-bookmark-container href=https://github.com/peterrus/protonmail-export-linux><div class=kg-bookmark-content><div class=kg-bookmark-title>peterrus/protonmail-export-linux</div><div class=kg-bookmark-description>Simple example on how you can incrementally export (backup) all your email from Protonmail’s servers to a local Maildir archive. - peterrus/protonmail-export-linux</div><div class=kg-bookmark-metadata><img class=kg-bookmark-icon src=https://github.githubassets.com/favicons/favicon.svg><span class=kg-bookmark-author>GitHub</span><span class=kg-bookmark-publisher>peterrus</span></div></div><div class=kg-bookmark-thumbnail><img src="https://avatars.githubusercontent.com/u/1117858?s=400&amp;v=4"></div></a></figure><p>Run the following command to pull down the repo from Github.</p><pre><code class=language-bash>git clone <a href=https://github.com/peterrus/protonmail-export-linux.git>https://github.com/peterrus/protonmail-export-linux.git</a></code></pre><p>The <code>cd</code> into the cloned repo</p><pre><code class=language-bash>cd protonmail-export-linux</code></pre><p>Next, you need to install <code>offlineimap</code></p><pre><code class=language-bash>sudo apt-get install offlineimap</code></pre><p>Once installed, in the <code>protonmail-export-linux</code> directory, there will be a <code>offlineimaprc</code> file. Open this with your favorite text editor. I&rsquo;ll be using <code>vim</code> in this example.</p><pre><code class=language-bash>vim offlineimparc</code></pre><p>You&rsquo;ll see a file open that looks something like the following</p><pre><code class=language-plaintext># Feel free to modify this file to your needs</p>
-<h1 id=see--for-a-full-reference>See <a href=https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf>https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf</a> for a full reference<a hidden class=anchor aria-hidden=true href=#see--for-a-full-reference>#</a></h1>
+Security:  STARTTLS</code></pre><p>Take a note of the values <code>{your email}</code> and <code>{your password}</code>. You&rsquo;ll need these later.</p><h3 id="step-5-setting-up-offlineimap">Step 5: Setting up Offlineimap<a hidden class="anchor" aria-hidden="true" href="#step-5-setting-up-offlineimap">#</a></h3><p>I&rsquo;m going to be using an open-source tool I found on Github. Written by <code><a href="https://github.com/peterrus/protonmail-export-linux">peterrus</a></code>.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://github.com/peterrus/protonmail-export-linux"><div class="kg-bookmark-content"><div class="kg-bookmark-title">peterrus/protonmail-export-linux</div><div class="kg-bookmark-description">Simple example on how you can incrementally export (backup) all your email from Protonmail’s servers to a local Maildir archive. - peterrus/protonmail-export-linux</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg"><span class="kg-bookmark-author">GitHub</span><span class="kg-bookmark-publisher">peterrus</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://avatars.githubusercontent.com/u/1117858?s&#x3D;400&amp;v&#x3D;4"></div></a></figure><p>Run the following command to pull down the repo from Github.</p><pre><code class="language-bash">git clone <a href="https://github.com/peterrus/protonmail-export-linux.git">https://github.com/peterrus/protonmail-export-linux.git</a></code></pre><p>The <code>cd</code> into the cloned repo</p><pre><code class="language-bash">cd protonmail-export-linux</code></pre><p>Next, you need to install <code>offlineimap</code></p><pre><code class="language-bash">sudo apt-get install offlineimap</code></pre><p>Once installed, in the <code>protonmail-export-linux</code> directory, there will be a <code>offlineimaprc</code> file. Open this with your favorite text editor. I&rsquo;ll be using <code>vim</code> in this example.</p><pre><code class="language-bash">vim offlineimparc</code></pre><p>You&rsquo;ll see a file open that looks something like the following</p><pre><code class="language-plaintext"># Feel free to modify this file to your needs</p>
+<h1 id="see--for-a-full-reference">See <a href="https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf">https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf</a> for a full reference<a hidden class="anchor" aria-hidden="true" href="#see--for-a-full-reference">#</a></h1>
 <p>[general]
 accounts = Protonmail
 metadata = ./offlineimap-metadata</p>
 <p>[Account Protonmail]
 localrepository = ProtonmailLocal
 remoterepository = ProtonmailRemote</p>
-<h1 id=feel-free-to-change-this-or-disable-it-by-commenting-it-out>Feel free to change this, or disable it by commenting it out<a hidden class=anchor aria-hidden=true href=#feel-free-to-change-this-or-disable-it-by-commenting-it-out>#</a></h1>
+<h1 id="feel-free-to-change-this-or-disable-it-by-commenting-it-out">Feel free to change this, or disable it by commenting it out<a hidden class="anchor" aria-hidden="true" href="#feel-free-to-change-this-or-disable-it-by-commenting-it-out">#</a></h1>
 <p>postsynchook = notify-send &lsquo;Protonmail export done&rsquo;</p>
 <p>[Repository ProtonmailLocal]
 type = Maildir
 localfolders = ./protonmail-export</p>
-<h1 id=if-you-accidentally-delete-mail-locally-it-wont-get-synced-to-protonmail>If you (accidentally) delete mail locally, it won&rsquo;t get synced to Protonmail<a hidden class=anchor aria-hidden=true href=#if-you-accidentally-delete-mail-locally-it-wont-get-synced-to-protonmail>#</a></h1>
+<h1 id="if-you-accidentally-delete-mail-locally-it-wont-get-synced-to-protonmail">If you (accidentally) delete mail locally, it won&rsquo;t get synced to Protonmail<a hidden class="anchor" aria-hidden="true" href="#if-you-accidentally-delete-mail-locally-it-wont-get-synced-to-protonmail">#</a></h1>
 <p>sync_deletes = no</p>
 <p>[Repository ProtonmailRemote]
 type = IMAP</p>
-<h1 id=change-this-to-the-value-provided-in-the-protonmail-bridge>Change this to the value provided in the Protonmail bridge<a hidden class=anchor aria-hidden=true href=#change-this-to-the-value-provided-in-the-protonmail-bridge>#</a></h1>
+<h1 id="change-this-to-the-value-provided-in-the-protonmail-bridge">Change this to the value provided in the Protonmail bridge<a hidden class="anchor" aria-hidden="true" href="#change-this-to-the-value-provided-in-the-protonmail-bridge">#</a></h1>
 <p>remoteuser = {your email}
 remotepass = {your password}
 remotehost = localhost
 remoteport = 1143
 ssl = no
 starttls = no</p>
-<h1 id=if-you-delete-mail-on-protonmail-this-deletion-also-gets-synced-to-the-archive>If you delete mail on Protonmail, this deletion also get&rsquo;s synced to the archive<a hidden class=anchor aria-hidden=true href=#if-you-delete-mail-on-protonmail-this-deletion-also-gets-synced-to-the-archive>#</a></h1>
+<h1 id="if-you-delete-mail-on-protonmail-this-deletion-also-gets-synced-to-the-archive">If you delete mail on Protonmail, this deletion also get&rsquo;s synced to the archive<a hidden class="anchor" aria-hidden="true" href="#if-you-delete-mail-on-protonmail-this-deletion-also-gets-synced-to-the-archive">#</a></h1>
 <p>expunge = yes</p>
-<h1 id=dont-try-to-sync-local-changes-to-protonmail-we-just-want-a-backup>Don&rsquo;t try to sync local changes to Protonmail, we just want a backup<a hidden class=anchor aria-hidden=true href=#dont-try-to-sync-local-changes-to-protonmail-we-just-want-a-backup>#</a></h1>
-<p>readonly = True</code></pre><p>Leave everything how it is, apart from the section where I have specified, <code>{your email}</code> and <code>{your password}</code>. These will need to be replaced with your ProtonMail Bridge email and password that I got you to take note of earlier.</p><p>Save your changes and exit your text editor.</p><h3 id=step-6-setting-up-screen>Step 6: Setting up screen</h3><p>I use screen to run services in the background. Both <code>protonmail-bridge</code> and <code>offlineimap</code> need to run simultaneously.</p><pre><code class=language-bash>sudo apt-get install screen</code></pre><h3 id=step-7-creating-a-startup-script>Step 7: Creating a startup script<a hidden class=anchor aria-hidden=true href=#step-6-setting-up-screen>#</a></h3><p>I made it easy for myself and created a startup script to execute both <code>protonmail-bridge</code> and <code>offlineimap</code></p><p>Here&rsquo;s my script, simply create a new file named <code>start-sync.sh</code> in your home directory. Giving it execute permissions by running</p><pre><code class=language-bash>sudo chmod +x start-sync.sh</code></pre><p>The <code>start-sync.sh</code> file contents should look like this.</p><pre><code>#! /bin/bash
+<h1 id="dont-try-to-sync-local-changes-to-protonmail-we-just-want-a-backup">Don&rsquo;t try to sync local changes to Protonmail, we just want a backup<a hidden class="anchor" aria-hidden="true" href="#dont-try-to-sync-local-changes-to-protonmail-we-just-want-a-backup">#</a></h1>
+<p>readonly = True</code></pre><p>Leave everything how it is, apart from the section where I have specified, <code>{your email}</code> and <code>{your password}</code>. These will need to be replaced with your ProtonMail Bridge email and password that I got you to take note of earlier.</p><p>Save your changes and exit your text editor.</p><h3 id="step-6-setting-up-screen">Step 6: Setting up screen</h3><p>I use screen to run services in the background. Both <code>protonmail-bridge</code> and <code>offlineimap</code> need to run simultaneously.</p><pre><code class="language-bash">sudo apt-get install screen</code></pre><h3 id="step-7-creating-a-startup-script">Step 7: Creating a startup script<a hidden class="anchor" aria-hidden="true" href="#step-6-setting-up-screen">#</a></h3><p>I made it easy for myself and created a startup script to execute both <code>protonmail-bridge</code> and <code>offlineimap</code></p><p>Here&rsquo;s my script, simply create a new file named <code>start-sync.sh</code> in your home directory. Giving it execute permissions by running</p><pre><code class="language-bash">sudo chmod +x start-sync.sh</code></pre><p>The <code>start-sync.sh</code> file contents should look like this. </p><pre><code>#! /bin/bash
 echo &ldquo;killing existing screen sessions&rdquo;
 pkill screen
 echo &ldquo;Starting bridge&rdquo;
 screen -d -m protonmail-bridge &ndash;cli
 echo &ldquo;Starting sync&rdquo;
 sleep 10
-screen -d -m offlineimap -c /home/{your user}/protonmail-export-linux/offlineimaprc</code></pre><p>Change the location of your <code>offlineimaprc</code> file in that shell script.</p><h3 id=step-8-starting-offlineimap>Step 8: Starting Offlineimap<a hidden class=anchor aria-hidden=true href=#step-8-starting-offlineimap>#</a></h3><p>Now it&rsquo;s time to execute your <code>start-sync.sh</code></p><pre><code>./start-sync.sh</code></pre><p>Now, both of your services should have started up. To see them, run the following command</p><pre><code class=language-bash>screen -r</code></pre><p>You&rsquo;ll see an output like the following</p><pre><code>ed@mail:<del># screen -r
+screen -d -m offlineimap -c /home/{your user}/protonmail-export-linux/offlineimaprc</code></pre><p>Change the location of your <code>offlineimaprc</code> file in that shell script.</p><h3 id="step-8-starting-offlineimap">Step 8: Starting Offlineimap<a hidden class="anchor" aria-hidden="true" href="#step-8-starting-offlineimap">#</a></h3><p>Now it&rsquo;s time to execute your <code>start-sync.sh</code></p><pre><code>./start-sync.sh</code></pre><p>Now, both of your services should have started up. To see them, run the following command</p><pre><code class="language-bash">screen -r</code></pre><p>You&rsquo;ll see an output like the following</p><pre><code>ed@mail:<del># screen -r
 There are several suitable screens on:
 6415..mail      (12/05/20 18:06:26)     (Detached)
 6308..mail      (12/05/20 18:06:16)     (Detached)
 Type &ldquo;screen [-d] -r [pid.]tty.host&rdquo; to resume one of them.
-ed@mail:</del>#</code></pre><p>Then run</p><pre><code class=language-bash>screen -r 6415 // 6415 being the id of the top process on the screen -r output</code></pre><p>You should see an output of a successful authentication with ProtonMail Bridge, and a list of emails currently being downloaded.</p><pre><code>Copy message UID 2081 (23/3445) ProtonmailRemote:All Mail -&gt; ProtonmailLocal
+ed@mail:</del>#</code></pre><p>Then run</p><pre><code class="language-bash">screen -r 6415 // 6415 being the id of the top process on the screen -r output</code></pre><p>You should see an output of a successful authentication with ProtonMail Bridge, and a list of emails currently being downloaded.</p><pre><code>Copy message UID 2081 (23/3445) ProtonmailRemote:All Mail -&gt; ProtonmailLocal
 Folder INBOX [acc: Protonmail]:
-etc&hellip;</code></pre><p>Detach from this screen by hitting <code>Ctrl + a</code> and <code>Ctrl + d</code>.</p><h3 id=step-9-where-are-my-emails>Step 9: Where are my emails?</h3><p>Whilst your emails are downloading, they will be saved to <code>~/protonmail-export</code>. You should see a list of your email folders in this directory, under the <code>cur</code> subdirectory.</p><h3 id=step-10-setting-up-a-cron-job-to-pull-new-emails>Step 10: Setting up a cron job to pull new emails</h3><p>Now it&rsquo;s time to set this job up to run each day, or each hour, whatever you&rsquo;d like to pick.</p><p>Run the following</p><pre><code>sudo crontab -e</code></pre><p>At the very bottom of your <code>crontab</code> file, paste in the following command.</p><pre><code>0 0 * * * /home/{your user}/start-sync.sh</code></pre><p>I use a tool called <a href=https://crontab.guru/>crontab.guru</a> to assist with picking a schedule to run my command.</p><p>My command will run at midnight each day.</p><hr><h3 id=that-s-all>That&rsquo;s all<a hidden class=anchor aria-hidden=true href=#step-9-where-are-my-emails>#</a></h3><p>And hopefully, everything should be up and running successfully. Let me know if you receive any issues in the comments, I&rsquo;ll be happy to help you out.</p><p>You could now sync all your emails to Dropbox, or something like Syncthing, which <a href=https://theselfhostingblog.com/posts/how-to-set-up-a-headless-syncthing-network/>I have recently written about here</a>.</p><p></p></p></div><footer class=post-footer><ul class=post-tags><li><a href=https://theselfhostingblog.com/tags/guides/>Guides</a></li></ul><nav class=paginav><a class=prev href=https://theselfhostingblog.com/posts/the-best-self-hosting-subreddits-to-follow-in-2021/><span class=title>« Prev</span>
-<span>10 of the BEST Self-hosting Subreddits To Follow (In 2021)</span>
-</a><a class=next href=https://theselfhostingblog.com/posts/schiit-modi-2-fixing-windows-not-recognised/><span class=title>Next »</span>
-<span>Schiit Modi 2 - Fixing Windows not recognizing USB device</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://theselfhostingblog.com/>The Self-Hosting Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+etc&hellip;</code></pre><p>Detach from this screen by hitting <code>Ctrl + a</code> and <code>Ctrl + d</code>.</p><h3 id="step-9-where-are-my-emails">Step 9: Where are my emails?</h3><p>Whilst your emails are downloading, they will be saved to <code>~/protonmail-export</code>. You should see a list of your email folders in this directory, under the <code>cur</code> subdirectory.</p><h3 id="step-10-setting-up-a-cron-job-to-pull-new-emails">Step 10: Setting up a cron job to pull new emails</h3><p>Now it&rsquo;s time to set this job up to run each day, or each hour, whatever you&rsquo;d like to pick.</p><p>Run the following</p><pre><code>sudo crontab -e</code></pre><p>At the very bottom of your <code>crontab</code> file, paste in the following command.</p><pre><code>0 0 * * * /home/{your user}/start-sync.sh</code></pre><p>I use a tool called <a href="https://crontab.guru/">crontab.guru</a> to assist with picking a schedule to run my command.</p><p>My command will run at midnight each day.</p><hr><h3 id="that-s-all">That&rsquo;s all<a hidden class="anchor" aria-hidden="true" href="#step-9-where-are-my-emails">#</a></h3><p>And hopefully, everything should be up and running successfully. Let me know if you receive any issues in the comments, I&rsquo;ll be happy to help you out.</p><p>You could now sync all your emails to Dropbox, or something like Syncthing, which <a href="https://theselfhostingblog.com/posts/how-to-set-up-a-headless-syncthing-network/">I have recently written about here</a>.</p><p></p></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://192.168.1.158:1313/posts/the-best-self-hosting-subreddits-to-follow-in-2021/">
+    <span class="title">« Prev</span>
+    <span>10 of the BEST Self-hosting Subreddits To Follow (In 2021)</span>
+  </a>
+  <a class="next" href="http://192.168.1.158:1313/posts/schiit-modi-2-fixing-windows-not-recognised/">
+    <span class="title">Next »</span>
+    <span>Schiit Modi 2 - Fixing Windows not recognizing USB device</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://192.168.1.158:1313/">The Self-Hosting Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

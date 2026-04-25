@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tag on The Self-Hosting Blog</title>
+    <link>http://192.168.1.158:1313/tag/</link>
+    <description>Recent content in Tag on The Self-Hosting Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://192.168.1.158:1313/tag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Newsletter</title>
+      <link>http://192.168.1.158:1313/tag/newsletter/</link>
+      <pubDate>Mon, 07 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/tag/newsletter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Guides</title>
+      <link>http://192.168.1.158:1313/tag/guides/</link>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/tag/guides/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ramblings</title>
+      <link>http://192.168.1.158:1313/tag/ramblings/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/tag/ramblings/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

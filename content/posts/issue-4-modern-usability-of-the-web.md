@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #4 • Modern usability of the web'
 date: 2021-03-08
 description: 'The Self-Hosting Blog • Issue #4 Happy Monday! Hope you had a good weekend. We''ve had a very busy week so we''ve got tons of updates to share with you! We came across https://grumpy.website/ this week,'
 cover:
   image: '/images/2021/03/Newsletter-Header-1.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

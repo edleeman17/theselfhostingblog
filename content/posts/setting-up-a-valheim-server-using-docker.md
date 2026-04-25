@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Setting up a Valheim server using Docker'
 date: 2021-02-22
 description: 'I''m going to talk through how to host a Valheim server on a docker image. This will enable you to set up a permanent server for all your friends to enjoy, 24/7.'
 cover:
   image: 'https://images.unsplash.com/photo-1567108077905-f8a10e69a5a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDF8fHZpa2luZ3xlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

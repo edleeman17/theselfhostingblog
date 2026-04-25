@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Completely Self-Hosting Plausible.io. A privacy-friendly alternative to Google Analytics'
 date: 2021-03-09
 description: 'Plausible is a lightweight, ethical, open-source and privacy-friendly Google Analytics alternative. We''re going to show you how to self-host it'
 cover:
   image: '/images/2021/03/Screenshot-2021-03-08-125439.png'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

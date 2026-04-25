@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #7 • Don''t underestimate the power of a Raspberry Pi 4'
 date: 2021-03-29
 description: 'The Self-Hosting Blog • Issue #7 Happy Monday! Hope you had a good weekend! This week, we learned that we should never underestimate the power of a Raspberry Pi 4 [https://amzn.to/3cWTlno]. u/Swamp7hi'
 cover:
   image: '/images/2021/03/Newsletter-Header-7.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

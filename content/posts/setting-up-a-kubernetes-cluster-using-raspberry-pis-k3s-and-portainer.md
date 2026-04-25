@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Setting up a Kubernetes cluster (K3s) using Raspberry Pi''s and Portainer'
 date: 2021-03-08
 description: 'Enter Kubernetes! an open-source platform for container management. I''ve been experimenting with this and a cluster of Raspberry Pi''s for the past week and wanted to share what I''ve discovered thus fa'
 cover:
   image: '/images/2021/03/pi-cluster.jpg'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

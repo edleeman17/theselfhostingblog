@@ -2,55 +2,57 @@ baseURL = "https://theselfhostingblog.com/"
 languageCode = "en-us"
 title = "The Self-Hosting Blog"
 theme = "PaperMod"
+enableRobotsTXT = true
+
 [pagination]
   pagerSize = 10
-enableRobotsTXT = true
+
+[taxonomies]
+  tag = "tag"
+  author = "author"
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    style = "github"
+    style = "github-dark"
     lineNos = false
 
 [params]
   description = "Guides and tutorials on self-hosting, Linux, Docker, and open-source software."
   author = "Ed"
+  defaultTheme = "dark"
+  disableThemeToggle = true
   ShowReadingTime = true
   ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   ShowToc = true
-  defaultTheme = "light"
-  disableThemeToggle = false
+  cover.linkFullImages = true
 
 [menu]
   [[menu.main]]
-    name = "Home"
-    url = "/"
+    name = "Posts"
+    url = "/posts/"
     weight = 1
   [[menu.main]]
     name = "Guides"
-    url = "/tags/guides/"
+    url = "/tag/guides/"
     weight = 2
   [[menu.main]]
     name = "Ramblings"
-    url = "/tags/ramblings/"
+    url = "/tag/ramblings/"
     weight = 3
   [[menu.main]]
     name = "About"
-    url = "/about/"
+    url = "/about-us/"
     weight = 4
   [[menu.main]]
     name = "Contact"
     url = "/contact/"
     weight = 5
-  [[menu.main]]
-    name = "RSS"
-    url = "/index.xml"
-    weight = 6
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

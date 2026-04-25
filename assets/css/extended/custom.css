@@ -1,40 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;0,800;1,400;1,700&display=swap');
 
-:root {
-  --font-body: 'Mulish', sans-serif;
-  --accent: #d70606;
-}
-
 body {
-  font-family: var(--font-body);
+  font-family: 'Mulish', sans-serif;
 }
 
-.post-title a:hover,
-.entry-header h1,
-h1, h2 {
-  font-weight: 800;
+/* Fix stretched cover images */
+.post-cover img,
+figure img,
+.cover img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 400px;
 }
 
-a:hover {
-  color: var(--accent);
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-.post-tags a,
-.terms-tags a {
-  border: 1px solid var(--accent);
-  color: var(--accent);
+a:hover { color: #d70606; }
+
+.post-tags a {
+  border: 1px solid #d70606;
+  color: #d70606;
 }
 
-.post-tags a:hover,
-.terms-tags a:hover {
-  background: var(--accent);
+.post-tags a:hover {
+  background: #d70606;
   color: #fff;
-}
-
-.paginav a:hover {
-  color: var(--accent);
-}
-
-code {
-  font-size: 0.9em;
 }

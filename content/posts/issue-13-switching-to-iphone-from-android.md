@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #13 • Switching to iPhone from Android'
 date: 2021-05-10
 description: '📰 The Self-Hosting Blog • Issue #13 Happy Monday! Here''s your weekly dose of self-hosting goodies! It''s been quite a slow week in the self-hosting world, so I don''t have that much for you. However, ha'
 cover:
   image: '/images/2021/05/Newsletter-Header-1.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

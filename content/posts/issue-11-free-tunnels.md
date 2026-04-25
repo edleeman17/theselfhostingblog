@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #11 • Free tunnels from Cloudflare'
 date: 2021-04-26
 description: '📰 The Self-Hosting Blog • Issue #11 Happy Monday! Here''s your weekly dose of self-hosting goodies! -------------------------------------------------------------------------------- 🎯 Top posts from our'
 cover:
   image: '/images/2021/04/Newsletter-Header-2.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

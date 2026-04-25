@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Host your static blog for free with the Digital Ocean App Platform'
 date: 2021-03-15
 description: 'The Digital Ocean App Platform allows you to host 3 static sites for free. Featuring a Cloudflare CDN, Hugo Static site generator, Github build pipelines, automatic HTTPS, custom domain name and DDoS '
 cover:
   image: '/images/2021/03/DI.png'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

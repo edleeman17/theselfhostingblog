@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ramblings on The Self-Hosting Blog</title>
+    <link>http://192.168.1.158:1313/tag/ramblings/</link>
+    <description>Recent content in Ramblings on The Self-Hosting Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://192.168.1.158:1313/tag/ramblings/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>We don&#39;t care who you are</title>
+      <link>http://192.168.1.158:1313/posts/building-a-more-privacy-friendly-blog/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/building-a-more-privacy-friendly-blog/</guid>
+      <description>At The Self-Hosting Blog, we are huge advocates for online privacy. We believe that you should never have to compromise your own privacy, just to use the internet. This is why we&amp;#39;ve decided that we ca</description>
+    </item>
+    <item>
+      <title>Why should you should spend the time, effort (and money) on self-hosting?</title>
+      <link>http://192.168.1.158:1313/posts/take-back-control-of-your-data/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/take-back-control-of-your-data/</guid>
+      <description>Self-hosting. Why? What&amp;#39;s the point? Everything you could possibly use is already available online. Why should you spend the time and effort (and money) self-hosting projects. A question that I have a</description>
+    </item>
+    <item>
+      <title>Don&#39;t be alarmed!</title>
+      <link>http://192.168.1.158:1313/posts/dont-be-alarmed/</link>
+      <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/dont-be-alarmed/</guid>
+      <description>I started this blog around 6 months ago as a place to share problems that I encountered whilst setting up my server in the loft. I often found, on my quest for digital freedom, problems that were rath</description>
+    </item>
+    <item>
+      <title>10 of the BEST Self-hosting Subreddits To Follow (In 2021)</title>
+      <link>http://192.168.1.158:1313/posts/the-best-self-hosting-subreddits-to-follow-in-2021/</link>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/the-best-self-hosting-subreddits-to-follow-in-2021/</guid>
+      <description>I&amp;#39;ve been using Reddit for many years now, and I have curated a list of Subreddits that I believe cover all the countless issues I have encountered during my journey of self-hosting.</description>
+    </item>
+    <item>
+      <title>Schiit Modi 2 - Fixing Windows not recognizing USB device</title>
+      <link>http://192.168.1.158:1313/posts/schiit-modi-2-fixing-windows-not-recognised/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/schiit-modi-2-fixing-windows-not-recognised/</guid>
+      <description>Schiit Modi 2 - Fixing Windows not recognizing USB device</description>
+    </item>
+    <item>
+      <title>Configuring Vim for Node Js Development</title>
+      <link>http://192.168.1.158:1313/posts/configuring-vim-for-node-js-development/</link>
+      <pubDate>Tue, 28 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/configuring-vim-for-node-js-development/</guid>
+      <description>An overview of the ideal vim plugins to use for Node Js development, with config file examples</description>
+    </item>
+    <item>
+      <title>My Self Hosted Note Syncing Journey Once Switching to Iphone</title>
+      <link>http://192.168.1.158:1313/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/</link>
+      <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/my-self-hosted-note-syncing-journey-once-switching-to-iphone/</guid>
+      <description>Recently moving to the iPhone meant that I had to re-think and re-design my existing note-taking solution, this is a quick writeup of my journey.</description>
+    </item>
+  </channel>
+</rss>

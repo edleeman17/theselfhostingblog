@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #14 • Are your services running?'
 date: 2021-05-17
 description: '📰 The Self-Hosting Blog • Issue #14 Happy Monday! Here''s your weekly dose of self-hosting goodies! Have you ever thought about being notified when or if your services go down? Shukuri Adams [https://g'
 cover:
   image: '/images/2021/05/Newsletter-Header-2.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

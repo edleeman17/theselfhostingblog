@@ -1,8 +1,9 @@
 ---
+author: ed
 title: 'Issue #20 • Competition time & Fun with Ansible!'
 date: 2021-10-01
 description: 'Happy Friday! What a crazy month it''s been as well, we''ve been looking into a lot of ansible stuff these past few weeks in preparation for some new features coming to the blog, so watch this space!! W'
-tags:
+tag:
   - 'Newsletter'
 ---
 

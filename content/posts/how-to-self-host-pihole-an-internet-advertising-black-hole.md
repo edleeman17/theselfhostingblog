@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'How to self-host PiHole, an internet advertising black hole'
 date: 2021-02-09
 description: 'This article will cover setting up your own self-hosted PiHole instance. Allowing you to run an internal DNS and block internet advertisements from reaching your machine.'
 cover:
   image: 'https://images.unsplash.com/photo-1511268559489-34b624fbfcf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDd8fGFkdmVydHN8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

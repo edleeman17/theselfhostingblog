@@ -1,11 +1,13 @@
 ---
+author: ed
 title: 'Streaming your Record Player output to Sonos using a Raspberry Pi'
 date: 2022-04-08
 draft: true
 description: 'Got an old Raspberry Pi laying around? Into Vinyl? Thought about how you might be able to stream your music without shelling out >£400 for the Sonos Connect Stereo Adaptor? This might be the tutorial '
 cover:
   image: 'https://images.unsplash.com/photo-1458560871784-56d23406c091?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDE3fHxyZWNvcmR8ZW58MHx8fHwxNjQ5NDI4OTM5&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Setting up Portainer. Docker Container management made easy'
 date: 2021-03-01
 description: 'Portainer is a lightweight management UI that allows you to easily manage your Docker host or Kubernetes Clusters. Portainer is as simple to deploy as it is to use.'
 cover:
   image: 'https://images.unsplash.com/photo-1504383633899-a17806f7e9ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDJ8fGNvbnRhaW5lcnxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

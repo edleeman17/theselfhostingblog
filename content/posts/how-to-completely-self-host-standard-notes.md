@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'How to completely self-host Standard Notes (Updated 2021)'
 date: 2020-08-25
 description: 'This is a tutorial on how to self-host Standard Notes, for security, privacy and control of data'
 cover:
   image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ'
-tags:
+  relative: false
+tag:
   - 'Guides'
 ---
 

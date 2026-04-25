@@ -1,8 +1,9 @@
 ---
+author: ed
 title: 'How to Set Up a Headless Syncthing Network'
 date: 2020-08-03
 description: 'This is a tutorial on how to setup Syncthing for encrypted P2P file transfers and synchronisation'
-tags:
+tag:
   - 'Guides'
 ---
 

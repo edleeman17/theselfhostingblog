@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #5 • Secure, decentralized communication'
 date: 2021-03-15
 description: 'The Self-Hosting Blog • Issue #5 Happy Monday! Hope you had a good weekend! We''ve joined Matrix [https://matrix.org/]! An open network for secure, decentralized communication. Join our official Self-H'
 cover:
   image: '/images/2021/03/Newsletter-Header-5.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 

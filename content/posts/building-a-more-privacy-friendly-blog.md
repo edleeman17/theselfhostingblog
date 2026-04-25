@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'We don''t care who you are'
 date: 2021-03-03
 description: 'At The Self-Hosting Blog, we are huge advocates for online privacy. We believe that you should never have to compromise your own privacy, just to use the internet. This is why we''ve decided that we ca'
 cover:
   image: 'https://images.unsplash.com/photo-1461685265823-f8d5d0b08b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDN8fHByaXZhY3l8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Ramblings'
 ---
 

@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Don''t be alarmed!'
 date: 2021-02-14
 description: 'I started this blog around 6 months ago as a place to share problems that I encountered whilst setting up my server in the loft. I often found, on my quest for digital freedom, problems that were rath'
 cover:
   image: 'https://images.unsplash.com/photo-1465086325773-459c6cfbb29f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDR8fGFsYXJtfGVufDB8fHw&ixlib=rb-1.2.1&q=80&w=2000'
-tags:
+  relative: false
+tag:
   - 'Ramblings'
 ---
 

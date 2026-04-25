@@ -1,36 +1,331 @@
-<!doctype html><html lang=en dir=auto data-theme=light><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | The Self-Hosting Blog</title>
-<meta name=keywords content><meta name=description content="Posts - The Self-Hosting Blog"><meta name=author content="Ed"><link rel=canonical href=https://theselfhostingblog.com/posts/><link crossorigin=anonymous href=/assets/css/stylesheet.069d6877cbbe02a9b237ca50e62dbc4a0c24163af241e9c18f3e5cc1ec57ec67.css integrity="sha256-Bp1od8u+AqmyN8pQ5i28SgwkFjryQenBjz5cwexX7Gc=" rel="preload stylesheet" as=style><link rel=icon href=https://theselfhostingblog.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://theselfhostingblog.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://theselfhostingblog.com/favicon-32x32.png><link rel=apple-touch-icon href=https://theselfhostingblog.com/apple-touch-icon.png><link rel=mask-icon href=https://theselfhostingblog.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://theselfhostingblog.com/posts/index.xml title=rss><link rel=alternate hreflang=en href=https://theselfhostingblog.com/posts/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"&&(document.querySelector("html").dataset.theme="dark")</script><meta property="og:url" content="https://theselfhostingblog.com/posts/"><meta property="og:site_name" content="The Self-Hosting Blog"><meta property="og:title" content="Posts"><meta property="og:description" content="Guides and tutorials on self-hosting, Linux, Docker, and open-source software."><meta property="og:locale" content="en_us"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content="Guides and tutorials on self-hosting, Linux, Docker, and open-source software."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://theselfhostingblog.com/posts/"}]}</script></head><body class=list id=top><header class=header><nav class=header-nav><div class=logo><a href=https://theselfhostingblog.com/ accesskey=h title="The Self-Hosting Blog (Alt + H)">The Self-Hosting Blog</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=https://theselfhostingblog.com/ title=Home><span>Home</span></a></li><li><a href=https://theselfhostingblog.com/tags/guides/ title=Guides><span>Guides</span></a></li><li><a href=https://theselfhostingblog.com/tags/ramblings/ title=Ramblings><span>Ramblings</span></a></li><li><a href=https://theselfhostingblog.com/about/ title=About><span>About</span></a></li><li><a href=https://theselfhostingblog.com/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://theselfhostingblog.com/index.xml title=RSS><span>RSS</span></a></li></ul></nav></header><main class=main><header class=page-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=https://theselfhostingblog.com/>Home</a></nav><h1>Posts</h1></header><article class=post-entry><figure class=entry-cover><img loading=lazy src=https://theselfhostingblog.com/images/2021/03/Newsletter-Header-4.png alt></figure><header class=entry-header><h2 class=entry-hint-parent>Issue #1 • Self-Hosting, why?</h2></header><div class=entry-content><p>The Self-Hosting BlogEd here at The Self-Hosting Blog. I hope you're having a great week!
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Posts | The Self-Hosting Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - The Self-Hosting Blog">
+<meta name="author" content="Ed">
+<link rel="canonical" href="http://192.168.1.158:1313/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.28834518a10a1d09fe622eb42326e916004b51d4064484a3b9eca2a509569d20.css" integrity="sha256-KINFGKEKHQn&#43;Yi60IybpFgBLUdQGRISjueyipQlWnSA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://192.168.1.158:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://192.168.1.158:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://192.168.1.158:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://192.168.1.158:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://192.168.1.158:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://192.168.1.158:1313/posts/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://192.168.1.158:1313/posts/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://192.168.1.158:1313/" accesskey="h" title="The Self-Hosting Blog (Alt + H)">The Self-Hosting Blog</a>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://192.168.1.158:1313/posts/" title="Posts">
+                    <span class="active">Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/tag/guides/" title="Guides">
+                    <span>Guides</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/tag/ramblings/" title="Ramblings">
+                    <span>Ramblings</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/about-us/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://192.168.1.158:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    <a href='http://192.168.1.158:1313/'>Home</a></nav>
+  <h1>
+    Posts
+  </h1>
+</header>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="http://192.168.1.158:1313/images/2021/03/Newsletter-Header-4.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Issue #1 • Self-Hosting, why?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The Self-Hosting BlogEd here at The Self-Hosting Blog. I hope you&#39;re having a great week!
 Thanks so much for choosing to subscribe to our mailing list. I really hope we can provide you with some useful information.
-I'm new to this, so I would love to hear any feedback that you have!
-Feel free to get in touch, I'd love to chat with my subscribers. You can find my details on our contact page.
-...</p></div><footer class=entry-footer><span title='2021-02-17 00:00:00 +0000 UTC'>February 17, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to Issue #1 • Self-Hosting, why?" href=https://theselfhostingblog.com/posts/issue-1-take-back-control-of-your-data/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1495592822108-9e6261896da8?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxMTc3M3wwfDF8c2VhcmNofDl8fGRhdGF8ZW58MHx8fA&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt></figure><header class=entry-header><h2 class=entry-hint-parent>Why should you should spend the time, effort (and money) on self-hosting?</h2></header><div class=entry-content><p>Self-hosting. Why? What's the point? Everything you could use is already available online. Why should you spend the time and effort (and money) on self-hosting projects?
+I&#39;m new to this, so I would love to hear any feedback that you have!
+Feel free to get in touch, I&#39;d love to chat with my subscribers. You can find my details on our contact page.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-02-17 00:00:00 +0000 UTC'>February 17, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to Issue #1 • Self-Hosting, why?" href="http://192.168.1.158:1313/posts/issue-1-take-back-control-of-your-data/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1495592822108-9e6261896da8?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxMTc3M3wwfDF8c2VhcmNofDl8fGRhdGF8ZW58MHx8fA&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Why should you should spend the time, effort (and money) on self-hosting?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Self-hosting. Why? What&#39;s the point? Everything you could use is already available online. Why should you spend the time and effort (and money) on self-hosting projects?
 A question that I have asked myself many times.Why should I spend the time setting up my own servers, complicating already seamless services, re-inventing the wheel?
-I can just use Dropbox to host my files. Maybe Google Photos to automatically save all my pictures instantly when I capture them. How about my password manager? I can just use LastPass, it does everything for me. I don't even need to think about it.
-...</p></div><footer class=entry-footer><span title='2021-02-17 00:00:00 +0000 UTC'>February 17, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to Why should you should spend the time, effort (and money) on self-hosting?" href=https://theselfhostingblog.com/posts/take-back-control-of-your-data/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1465086325773-459c6cfbb29f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxMTc3M3wwfDF8c2VhcmNofDR8fGFsYXJtfGVufDB8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt></figure><header class=entry-header><h2 class=entry-hint-parent>Don't be alarmed!</h2></header><div class=entry-content><p>bowlerdesign.tech is no moreI started this blog around 6 months ago as a place to share problems that I encountered whilst setting up my server in the loft.
-I often found, on my quest for digital freedom, problems that were rather niche. I struggled to find solutions on Google. Then began to see a theme, which made this blog gradually turn into a "self-hosting tutorial" blog.
+I can just use Dropbox to host my files. Maybe Google Photos to automatically save all my pictures instantly when I capture them. How about my password manager? I can just use LastPass, it does everything for me. I don&#39;t even need to think about it.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-02-17 00:00:00 +0000 UTC'>February 17, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to Why should you should spend the time, effort (and money) on self-hosting?" href="http://192.168.1.158:1313/posts/take-back-control-of-your-data/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1465086325773-459c6cfbb29f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxMTc3M3wwfDF8c2VhcmNofDR8fGFsYXJtfGVufDB8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Don&#39;t be alarmed!
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>bowlerdesign.tech is no moreI started this blog around 6 months ago as a place to share problems that I encountered whilst setting up my server in the loft.
+I often found, on my quest for digital freedom, problems that were rather niche. I struggled to find solutions on Google. Then began to see a theme, which made this blog gradually turn into a &#34;self-hosting tutorial&#34; blog.
 Therefore..
-theselfhostingblog.com is bornThanks for sticking with me.</p></div><footer class=entry-footer><span title='2021-02-14 00:00:00 +0000 UTC'>February 14, 2021</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to Don't be alarmed!" href=https://theselfhostingblog.com/posts/dont-be-alarmed/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1511268559489-34b624fbfcf5?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxMTc3M3wwfDF8c2VhcmNofDd8fGFkdmVydHN8ZW58MHx8fA&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt></figure><header class=entry-header><h2 class=entry-hint-parent>How to self-host PiHole, an internet advertising black hole</h2></header><div class=entry-content><p>This article will cover setting up your own self-hosted PiHole instance. Allowing you to run an internal DNS and block internet advertisements from reaching your machine.
+theselfhostingblog.com is bornThanks for sticking with me.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-02-14 00:00:00 +0000 UTC'>February 14, 2021</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to Don&#39;t be alarmed!" href="http://192.168.1.158:1313/posts/dont-be-alarmed/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1511268559489-34b624fbfcf5?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxMTc3M3wwfDF8c2VhcmNofDd8fGFkdmVydHN8ZW58MHx8fA&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">How to self-host PiHole, an internet advertising black hole
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This article will cover setting up your own self-hosted PiHole instance. Allowing you to run an internal DNS and block internet advertisements from reaching your machine.
 What is PiHole?PiHole offers Network-wide protection for internet advertisements. PiHole saves you from needing to install an Ad-blocker on each device that you own. PiHole even blocks in-app advertisements, so no longer, are your free-to-play games interrupted by those annoying adverts.
 Home1. Install a supported operating systemYou can run Pi-hole in a container, or deploy it directly to a supported operating system via our automated installer.DPi-hole logotelekrmorPiHole can also improve your network performance, as advertisements are no longer being downloaded, every time you load up a new website.
-...</p></div><footer class=entry-footer><span title='2021-02-09 00:00:00 +0000 UTC'>February 9, 2021</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to How to self-host PiHole, an internet advertising black hole" href=https://theselfhostingblog.com/posts/how-to-self-host-pihole-an-internet-advertising-black-hole/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxMTc3M3wwfDF8c2VhcmNofDF8fGNvbXB1dGVyfGVufDB8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt></figure><header class=entry-header><h2 class=entry-hint-parent>10 of the BEST Self-hosting Subreddits To Follow (In 2021)</h2></header><div class=entry-content><p>IntroductionReddit is a wonderful place. It's full of like-minded people who share common interests. Rarely, a Subreddit does not exist.
-I've been using Reddit for many years now, and I have curated a list of Subreddits that I believe cover all the countless issues I have encountered during my journey of self-hosting.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-02-09 00:00:00 +0000 UTC'>February 9, 2021</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to How to self-host PiHole, an internet advertising black hole" href="http://192.168.1.158:1313/posts/how-to-self-host-pihole-an-internet-advertising-black-hole/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MXwxMTc3M3wwfDF8c2VhcmNofDF8fGNvbXB1dGVyfGVufDB8fHw&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">10 of the BEST Self-hosting Subreddits To Follow (In 2021)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>IntroductionReddit is a wonderful place. It&#39;s full of like-minded people who share common interests. Rarely, a Subreddit does not exist.
+I&#39;ve been using Reddit for many years now, and I have curated a list of Subreddits that I believe cover all the countless issues I have encountered during my journey of self-hosting.
 My personal curated list of self-hosting related Subreddits.Here is what I believe is the best self-hosting Subreddits to join in 2021.
-...</p></div><footer class=entry-footer><span title='2021-02-07 00:00:00 +0000 UTC'>February 7, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to 10 of the BEST Self-hosting Subreddits To Follow (In 2021)" href=https://theselfhostingblog.com/posts/the-best-self-hosting-subreddits-to-follow-in-2021/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt></figure><header class=entry-header><h2 class=entry-hint-parent>Archiving ProtonMail Emails on a headless Ubuntu instance</h2></header><div class=entry-content><p>IntroductionI wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.
-Secure email: ProtonMail is free encrypted email.ProtonMail is the world’s largest secure email service, developed by CERN and MIT scientists. We are open source and protected by Swiss privacy lawProtonMailI'm going to talk through my steps. There's plenty of tutorials out there for email services such as; Gmail, Hotmail etc. But not much around ProtonMail, especially using a headless instance.
-...</p></div><footer class=entry-footer><span title='2020-11-16 00:00:00 +0000 UTC'>November 16, 2020</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to Archiving ProtonMail Emails on a headless Ubuntu instance" href=https://theselfhostingblog.com/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1522338140262-f46f5913618a?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt></figure><header class=entry-header><h2 class=entry-hint-parent>Schiit Modi 2 - Fixing Windows not recognizing USB device</h2></header><div class=entry-content><p>Sorry for the off-topic post, but this has been bugging me for monthsHaving recently purchased a Schiit Modi 2 from eBay, just to try out before commiting to something a little more expensive (and reliable).
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-02-07 00:00:00 +0000 UTC'>February 7, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to 10 of the BEST Self-hosting Subreddits To Follow (In 2021)" href="http://192.168.1.158:1313/posts/the-best-self-hosting-subreddits-to-follow-in-2021/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Archiving ProtonMail Emails on a headless Ubuntu instance
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>IntroductionI wanted to be able to store all of my ProtonMail emails locally for archival purposes, with the intention of running a local content search whenever I needed something retrieving.
+Secure email: ProtonMail is free encrypted email.ProtonMail is the world’s largest secure email service, developed by CERN and MIT scientists. We are open source and protected by Swiss privacy lawProtonMailI&#39;m going to talk through my steps. There&#39;s plenty of tutorials out there for email services such as; Gmail, Hotmail etc. But not much around ProtonMail, especially using a headless instance.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-11-16 00:00:00 +0000 UTC'>November 16, 2020</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to Archiving ProtonMail Emails on a headless Ubuntu instance" href="http://192.168.1.158:1313/posts/archiving-protonmail-emails-on-a-headless-ubuntu-instance/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1522338140262-f46f5913618a?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Schiit Modi 2 - Fixing Windows not recognizing USB device
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Sorry for the off-topic post, but this has been bugging me for monthsHaving recently purchased a Schiit Modi 2 from eBay, just to try out before commiting to something a little more expensive (and reliable).
 The Modi 2 has some real issues with Windows 10, I belive the Modi 3 solves all of these issues.
-There's an error message when plugging the Modi into Windows which is something like "USB device not recognized, the last USB device you connected to this computer malfunctioned, and Windows does not recognize it."
-...</p></div><footer class=entry-footer><span title='2020-09-27 00:00:00 +0000 UTC'>September 27, 2020</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to Schiit Modi 2 - Fixing Windows not recognizing USB device" href=https://theselfhostingblog.com/posts/schiit-modi-2-fixing-windows-not-recognised/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1542577195-d562c6698ff3?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt></figure><header class=entry-header><h2 class=entry-hint-parent>Self-hosting a Wireguard VPN, the easy way</h2></header><div class=entry-content><p>IntroductionWe're going to cover setting up a Wireguard VPN on your home server or cloud service. For secure remote access to your internal network, or a cheap, secure connection to a cloud service for some increased privacy when browsing online.
-VPN's don't make you anonymous, there's a lot of stigma around this. Here's some helpful information if you want to read into this some more.
+There&#39;s an error message when plugging the Modi into Windows which is something like &#34;USB device not recognized, the last USB device you connected to this computer malfunctioned, and Windows does not recognize it.&#34;
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-09-27 00:00:00 +0000 UTC'>September 27, 2020</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to Schiit Modi 2 - Fixing Windows not recognizing USB device" href="http://192.168.1.158:1313/posts/schiit-modi-2-fixing-windows-not-recognised/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1542577195-d562c6698ff3?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Self-hosting a Wireguard VPN, the easy way
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>IntroductionWe&#39;re going to cover setting up a Wireguard VPN on your home server or cloud service. For secure remote access to your internal network, or a cheap, secure connection to a cloud service for some increased privacy when browsing online.
+VPN&#39;s don&#39;t make you anonymous, there&#39;s a lot of stigma around this. Here&#39;s some helpful information if you want to read into this some more.
 Setting up Wireguard, the easy wayI initially found setting up Wireguard confusing. Keys kept getting mixed up, I had no way of sending public keys between devices so that I could set up a client on my mobile device etc..
-...</p></div><footer class=entry-footer><span title='2020-09-13 00:00:00 +0000 UTC'>September 13, 2020</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to Self-hosting a Wireguard VPN, the easy way" href=https://theselfhostingblog.com/posts/self-hosting-a-wireguard-vpn-the-easy-way/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1582139329536-e7284fece509?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt></figure><header class=entry-header><h2 class=entry-hint-parent>Completely Self-Hosting Bitwarden Password Manager (Updated 2022)</h2></header><div class=entry-content><p>IntroductionThis article will cover setting up your own self-hosted Bitwarden (Vaultwarden) instance with Docker and configuring ngnix to allow for public exposure for cross-device access to your vault.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-09-13 00:00:00 +0000 UTC'>September 13, 2020</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to Self-hosting a Wireguard VPN, the easy way" href="http://192.168.1.158:1313/posts/self-hosting-a-wireguard-vpn-the-easy-way/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1582139329536-e7284fece509?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Completely Self-Hosting Bitwarden Password Manager (Updated 2022)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>IntroductionThis article will cover setting up your own self-hosted Bitwarden (Vaultwarden) instance with Docker and configuring ngnix to allow for public exposure for cross-device access to your vault.
 What is Bitwarden?Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault. The Bitwarden platform offers a variety of client applications including a web interface, desktop applications, browser extensions, mobile apps, and a CLI.
-...</p></div><footer class=entry-footer><span title='2020-08-30 00:00:00 +0000 UTC'>August 30, 2020</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to Completely Self-Hosting Bitwarden Password Manager (Updated 2022)" href=https://theselfhostingblog.com/posts/how-to-self-host-bitwarden-on-ubuntu-server/></a></article><article class=post-entry><figure class=entry-cover><img loading=lazy src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt></figure><header class=entry-header><h2 class=entry-hint-parent>How to completely self-host Standard Notes (Updated 2021)</h2></header><div class=entry-content><p>IntroductionThis article will cover setting up your own self-hosted Standard Notes instance and routing your instance through Nginx to allow for public exposure.
-We'll also go over self-hosting Standard Notes Extensions to allow you to use extensions within your instance, such as a Markdown editor or secure spreadsheets
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-08-30 00:00:00 +0000 UTC'>August 30, 2020</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to Completely Self-Hosting Bitwarden Password Manager (Updated 2022)" href="http://192.168.1.158:1313/posts/how-to-self-host-bitwarden-on-ubuntu-server/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">How to completely self-host Standard Notes (Updated 2021)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>IntroductionThis article will cover setting up your own self-hosted Standard Notes instance and routing your instance through Nginx to allow for public exposure.
+We&#39;ll also go over self-hosting Standard Notes Extensions to allow you to use extensions within your instance, such as a Markdown editor or secure spreadsheets
 What is Standard NotesStandard Notes is a free, open-source, and completely encrypted notes app. Being open-source, allows anyone to self-host their own Standard Notes server. This means that you own all of your data, on your server.
-...</p></div><footer class=entry-footer><span title='2020-08-25 00:00:00 +0000 UTC'>August 25, 2020</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>Ed</span></footer><a class=entry-link aria-label="post link to How to completely self-host Standard Notes (Updated 2021)" href=https://theselfhostingblog.com/posts/how-to-completely-self-host-standard-notes/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://theselfhostingblog.com/posts/page/3/>«&nbsp;Prev&nbsp;
-</a><a class=next href=https://theselfhostingblog.com/posts/page/5/>Next&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://theselfhostingblog.com/>The Self-Hosting Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-08-25 00:00:00 +0000 UTC'>August 25, 2020</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>ed</span></footer>
+  <a class="entry-link" aria-label="post link to How to completely self-host Standard Notes (Updated 2021)" href="http://192.168.1.158:1313/posts/how-to-completely-self-host-standard-notes/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://192.168.1.158:1313/posts/page/3/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://192.168.1.158:1313/posts/page/5/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://192.168.1.158:1313/">The Self-Hosting Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+</body>
+
+</html>

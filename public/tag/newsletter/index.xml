@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Newsletter on The Self-Hosting Blog</title>
+    <link>http://192.168.1.158:1313/tag/newsletter/</link>
+    <description>Recent content in Newsletter on The Self-Hosting Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://192.168.1.158:1313/tag/newsletter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>📰Issue #21 • We&#39;re back</title>
+      <link>http://192.168.1.158:1313/posts/issue-21-were-back/</link>
+      <pubDate>Mon, 07 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-21-were-back/</guid>
+      <description>It&amp;#39;s been a while! Hope that you had an awesome holiday period and new year 🎉 Apologies for our lack of newsletters! I&amp;#39;m afraid that we&amp;#39;ve been quite busy with other commitments.</description>
+    </item>
+    <item>
+      <title>Issue #20 • Competition time &amp; Fun with Ansible!</title>
+      <link>http://192.168.1.158:1313/posts/issue-20-fun-with-ansible/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-20-fun-with-ansible/</guid>
+      <description>Happy Friday! What a crazy month it&amp;#39;s been as well, we&amp;#39;ve been looking into a lot of ansible stuff these past few weeks in preparation for some new features coming to the blog, so watch this space!! W</description>
+    </item>
+    <item>
+      <title>Issue #19 • Production Wordpress migrations</title>
+      <link>http://192.168.1.158:1313/posts/issue-19-production-wordpress-migrations/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-19-production-wordpress-migrations/</guid>
+      <description>Previously running in dedicated Wordpress hosting, now running inside Docker containers. I&amp;#39;ll probably do a write-up just to share my experience of fighting with DNS, Certificates, Duplication Tools, </description>
+    </item>
+    <item>
+      <title>Issue #18 • Blog expansion over to Forem</title>
+      <link>http://192.168.1.158:1313/posts/issue-18-blog-expansion-over-to-forem/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-18-blog-expansion-over-to-forem/</guid>
+      <description>📰 The Self-Hosting Blog • Issue #18 What&amp;#39;s new? We&amp;#39;ve been playing around with Forem [https://www.forem.com/] the backend that powers dev.to [https://dev.to]. We&amp;#39;ve been thinking about bringing the co</description>
+    </item>
+    <item>
+      <title>Issue #17 • New Horizons</title>
+      <link>http://192.168.1.158:1313/posts/issue-17-new-horizons/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-17-new-horizons/</guid>
+      <description>Happy Monday! Things have been quiet here, both of us have had far too many distractions this past month! Having said that, here is our first monthly dose of all things self hosting!</description>
+    </item>
+    <item>
+      <title>Issue #16 • We&#39;re moving to monthly</title>
+      <link>http://192.168.1.158:1313/posts/issue-16-were-moving-to-monthly/</link>
+      <pubDate>Mon, 31 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-16-were-moving-to-monthly/</guid>
+      <description>📰 The Self-Hosting Blog • Issue #16 Happy Monday! I have some news, I don&amp;#39;t feel like I am producing quality when I write-up the Weekly Newsletter. Therefore, James and I have decided to run the Newsl</description>
+    </item>
+    <item>
+      <title>Issue #15 • Tell me when I suck</title>
+      <link>http://192.168.1.158:1313/posts/issue-15-tell-me-when-i-suck/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-15-tell-me-when-i-suck/</guid>
+      <description>📰 The Self-Hosting Blog • Issue #15 Happy Monday! Here&amp;#39;s your weekly dose of self-hosting goodies! Thanks! Ed -------------------------------------------------------------------------------- 🎯 Top pos</description>
+    </item>
+    <item>
+      <title>Issue #14 • Are your services running?</title>
+      <link>http://192.168.1.158:1313/posts/issue-14-are-your-services-running/</link>
+      <pubDate>Mon, 17 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-14-are-your-services-running/</guid>
+      <description>📰 The Self-Hosting Blog • Issue #14 Happy Monday! Here&amp;#39;s your weekly dose of self-hosting goodies! Have you ever thought about being notified when or if your services go down? Shukuri Adams [https://g</description>
+    </item>
+    <item>
+      <title>Issue #13 • Switching to iPhone from Android</title>
+      <link>http://192.168.1.158:1313/posts/issue-13-switching-to-iphone-from-android/</link>
+      <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-13-switching-to-iphone-from-android/</guid>
+      <description>📰 The Self-Hosting Blog • Issue #13 Happy Monday! Here&amp;#39;s your weekly dose of self-hosting goodies! It&amp;#39;s been quite a slow week in the self-hosting world, so I don&amp;#39;t have that much for you. However, ha</description>
+    </item>
+    <item>
+      <title>Issue #12 • Save time by using the Raspberry Pi Imager&#39;s hidden feature</title>
+      <link>http://192.168.1.158:1313/posts/issue-12-save-time-by-using-the-raspberry-pi-imagers-hidden-feature/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-12-save-time-by-using-the-raspberry-pi-imagers-hidden-feature/</guid>
+      <description>Forget needing to add your ssh and wpa_supplicant files! Here&amp;#39;s a way to do it from the Raspberry Pi Imager</description>
+    </item>
+    <item>
+      <title>Issue #11 • Free tunnels from Cloudflare</title>
+      <link>http://192.168.1.158:1313/posts/issue-11-free-tunnels/</link>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-11-free-tunnels/</guid>
+      <description>📰 The Self-Hosting Blog • Issue #11 Happy Monday! Here&amp;#39;s your weekly dose of self-hosting goodies! -------------------------------------------------------------------------------- 🎯 Top posts from our</description>
+    </item>
+    <item>
+      <title>Issue #10 • IP Masquerading and server notifications</title>
+      <link>http://192.168.1.158:1313/posts/issue-10-ip-masquerading-and-server-notifications/</link>
+      <pubDate>Mon, 19 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-10-ip-masquerading-and-server-notifications/</guid>
+      <description>The top post from Inlets raises an interesting way of having a public static IP address without needing to pay your ISP for the pleasure. This can also be achieved for free using IP Masquerading, whic</description>
+    </item>
+    <item>
+      <title>Issue #9 • Obfuscate your online identity with an email alias</title>
+      <link>http://192.168.1.158:1313/posts/issue-9-obfuscate-your-online-identity-with-an-email-alias/</link>
+      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-9-obfuscate-your-online-identity-with-an-email-alias/</guid>
+      <description>In this weeks&amp;#39; issue, I&amp;#39;m going to talk a little about setting up SimpleLogin, we&amp;#39;ll be doing a full tutorial post in the future but this is more to make you aware of the service and how it can protec</description>
+    </item>
+    <item>
+      <title>Issue #8 • De-Google! Beat the YouTube algorithm, follow your subscriptions with RSS.</title>
+      <link>http://192.168.1.158:1313/posts/issue-8-de-google-beat-the-youtube-algorithm-follow-your-subscriptions-with-rss/</link>
+      <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-8-de-google-beat-the-youtube-algorithm-follow-your-subscriptions-with-rss/</guid>
+      <description>You may have noticed, while viewing your favorite YouTube content creators, that they ask you to &amp;#34;subscribe and click the bell icon&amp;#34; to be notified when they upload.</description>
+    </item>
+    <item>
+      <title>Issue #7 • Don&#39;t underestimate the power of a Raspberry Pi 4</title>
+      <link>http://192.168.1.158:1313/posts/issue-7-dont-underestimate-the-power-of-a-raspberry-pi-4/</link>
+      <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-7-dont-underestimate-the-power-of-a-raspberry-pi-4/</guid>
+      <description>The Self-Hosting Blog • Issue #7 Happy Monday! Hope you had a good weekend! This week, we learned that we should never underestimate the power of a Raspberry Pi 4 [https://amzn.to/3cWTlno]. u/Swamp7hi</description>
+    </item>
+    <item>
+      <title>Issue #6 • The self-hosted alternative to Trello and Notion</title>
+      <link>http://192.168.1.158:1313/posts/issue-6-the-self-hosted-alternative-to-trello-and-notion/</link>
+      <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-6-the-self-hosted-alternative-to-trello-and-notion/</guid>
+      <description>The Self-Hosting Blog • Issue #6 Happy Monday! Hope you had a good weekend! Focalboard [https://focalboard.com] has taken the internet by storm this week, introducing itself as an open source, self-ho</description>
+    </item>
+    <item>
+      <title>Issue #5 • Secure, decentralized communication</title>
+      <link>http://192.168.1.158:1313/posts/issue-5-modern-usability-of-the-web/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-5-modern-usability-of-the-web/</guid>
+      <description>The Self-Hosting Blog • Issue #5 Happy Monday! Hope you had a good weekend! We&amp;#39;ve joined Matrix [https://matrix.org/]! An open network for secure, decentralized communication. Join our official Self-H</description>
+    </item>
+    <item>
+      <title>Issue #4 • Modern usability of the web</title>
+      <link>http://192.168.1.158:1313/posts/issue-4-modern-usability-of-the-web/</link>
+      <pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-4-modern-usability-of-the-web/</guid>
+      <description>The Self-Hosting Blog • Issue #4 Happy Monday! Hope you had a good weekend. We&amp;#39;ve had a very busy week so we&amp;#39;ve got tons of updates to share with you! We came across https://grumpy.website/ this week,</description>
+    </item>
+    <item>
+      <title>Issue #3 • We should be back to normal soon</title>
+      <link>http://192.168.1.158:1313/posts/issue-3-we-should-be-back-to-normal-soon/</link>
+      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-3-we-should-be-back-to-normal-soon/</guid>
+      <description>The Self-Hosting Blog • Issue #3 Ed here at The Self-Hosting Blog. Happy Monday! Hope you had a good weekend. If you&amp;#39;re in the UK, we&amp;#39;ve had some good news that everything should be back to normal by </description>
+    </item>
+    <item>
+      <title>Issue #2 • RIP LastPass...</title>
+      <link>http://192.168.1.158:1313/posts/rip-lastpass/</link>
+      <pubDate>Sun, 21 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/rip-lastpass/</guid>
+      <description>The Self-Hosting Blog Ed here at The Self-Hosting Blog. I hope you&amp;#39;re having a great week! This week, LastPass announced that they are feature-locking their free tier. Forcing users to choose whether </description>
+    </item>
+    <item>
+      <title>Issue #1 • Self-Hosting, why?</title>
+      <link>http://192.168.1.158:1313/posts/issue-1-take-back-control-of-your-data/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://192.168.1.158:1313/posts/issue-1-take-back-control-of-your-data/</guid>
+      <description>The Self-Hosting Blog Ed here at The Self-Hosting Blog. I hope you&amp;#39;re having a great week! Thanks so much for choosing to subscribe to our mailing list. I really hope we can provide you with some usef</description>
+    </item>
+  </channel>
+</rss>

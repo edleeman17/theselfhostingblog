@@ -1,8 +1,9 @@
 ---
+author: ed
 title: 'How to Route Nginx Through a Child Nginx Configuration - Jumpbox to Web Server Configuration'
 date: 2020-01-02
 description: 'Routing nginx through another nginx instance from a central jumpbox server'
-tags:
+tag:
   - 'Guides'
 ---
 

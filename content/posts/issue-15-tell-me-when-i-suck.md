@@ -1,10 +1,12 @@
 ---
+author: ed
 title: 'Issue #15 • Tell me when I suck'
 date: 2021-05-24
 description: '📰 The Self-Hosting Blog • Issue #15 Happy Monday! Here''s your weekly dose of self-hosting goodies! Thanks! Ed -------------------------------------------------------------------------------- 🎯 Top pos'
 cover:
   image: '/images/2021/05/Newsletter-Header-3.png'
-tags:
+  relative: false
+tag:
   - 'Newsletter'
 ---
 
