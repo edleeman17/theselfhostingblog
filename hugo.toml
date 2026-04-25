@@ -1,8 +1,9 @@
 baseURL = "https://theselfhostingblog.com/"
 languageCode = "en-us"
 title = "The Self-Hosting Blog"
-theme = "PaperMod"
+theme = "hugo-blog-awesome"
 enableRobotsTXT = true
+enableEmoji = true
 
 [pagination]
   pagerSize = 10
@@ -12,25 +13,40 @@ enableRobotsTXT = true
   author = "author"
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+  [markup.goldmark.renderer]
+    unsafe = true
   [markup.highlight]
+    noClasses = false
     style = "github-dark"
-    lineNos = false
 
 [params]
+  sitename = "The Self-Hosting Blog"
   description = "Guides and tutorials on self-hosting, Linux, Docker, and open-source software."
-  author = "Ed"
-  defaultTheme = "dark"
-  disableThemeToggle = true
+  mainSections = ["posts"]
+  defaultColor = "dark"
+  toc = true
+  tocOpen = false
+  goToTop = true
   ShowReadingTime = true
-  ShowShareButtons = false
-  ShowPostNavLinks = true
   ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowToc = true
-  cover.linkFullImages = true
+  rssFeedDescription = "summary"
+
+  [params.author]
+    name = "Ed"
+    intro = "The Self-Hosting Blog"
+    description = "Join us and discover the latest in self-hosted applications and other open source technologies. We are two Software Engineers based in the UK, sharing guides on self-hosting, Docker, Linux, and open-source software."
+
+[[params.socialIcons]]
+  name = "twitter"
+  url = "https://twitter.com/selfhostingblog"
+
+[[params.socialIcons]]
+  name = "mastodon"
+  url = "https://fosstodon.org/web/accounts/320676"
+
+[[params.socialIcons]]
+  name = "Rss"
+  url = "/index.xml"
 
 [menu]
   [[menu.main]]
@@ -55,4 +71,4 @@ enableRobotsTXT = true
     weight = 5
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
