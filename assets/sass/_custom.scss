@@ -17,6 +17,11 @@ img {
   height: auto;
 }
 
+pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
 a:hover { color: #d70606; }
 
 .post-tags a {
